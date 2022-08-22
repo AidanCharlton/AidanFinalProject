@@ -1,12 +1,17 @@
 const express = require("express");
+const morgan = require("morgan");
 
 const PORT = process.env.PORT || 8000;
 
 const app = express();
 
-app.get('/test', (req, res) => {
-    res.json({message: 'hey it works'});
-})
+const {
+  getSpots,
+  testOut
+} = require("./data/handler")
+
+app.get("/getspots", getSpots)
+app.get("/test", testOut)
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
