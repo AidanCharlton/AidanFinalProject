@@ -6,8 +6,6 @@ const {
 
 const {
     MongoClient,
-    ConnectionClosedEvent,
-    ObjectId
 } = require("mongodb");
 
 require("dotenv").config();
