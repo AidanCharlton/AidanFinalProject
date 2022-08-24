@@ -1,9 +1,10 @@
 import React from "react";
+import Lander from "./Pages/Lander";
 
 const App = () => { 
   return (
-    <div className="App">
-      <h1>Hey</h1>
+    <div>
+      <Lander />
     </div>
   );
 }

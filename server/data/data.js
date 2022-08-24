@@ -386,17 +386,17 @@ const spots = [
     },
     {
         name: 'UDEM Curved Ledges and 2-Set',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5236145,-73.623022,3a,75y,92.73h,88.58t/data=!3m6!1e1!3m4!1sRmSnY9UzcoslqfzSrRJ_VA!2e0!7i16384!8i8192',
     },
     {
         name: 'Acadie Hubba',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5241053,-73.6254119,3a,75y,251.18h,83.2t/data=!3m6!1e1!3m4!1sFQtDJkq5xPkTpqECiU-bAQ!2e0!7i16384!8i8192',
     },
     {
         name: 'Sun Youth Rail',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5280229,-73.6166399,3a,75y,81.02h,78.05t/data=!3m6!1e1!3m4!1s1FJ3_uufnTK8yIvek25fbw!2e0!7i16384!8i8192',
     },
     {
@@ -406,22 +406,22 @@ const spots = [
     },
     {
         name: 'Rockland Barrier and Manny Pad',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5196075,-73.627367,3a,75y,153.37h,82.36t/data=!3m6!1e1!3m4!1syhNd9AG-YJy7vGPFqUUAsg!2e0!7i16384!8i8192',
     },
     {
         name: 'Ride On Grind and Small Grass Gap',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5321099,-73.6231151,3a,15y,203.5h,91.38t/data=!3m6!1e1!3m4!1sh1lo_AAYRMMdXKve7tu5Hg!2e0!7i16384!8i8192',
     },
     {
         name: 'CHUM Building Banks',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5312924,-73.6239306,3a,75y,258.34h,82.39t/data=!3m6!1e1!3m4!1soOpIEjBPrkIJTz3lu4ge5Q!2e0!7i16384!8i8192',
     },
     {
         name: 'Green Bench Ledges',
-        borough: 'Park Extension',
+        borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5294288,-73.6289179,3a,75y,183.68h,81.29t/data=!3m6!1e1!3m4!1shMKbUaTo1Z9UtpKstEKZoQ!2e0!7i16384!8i8192',
     },
     {
@@ -568,80 +568,96 @@ const spots = [
         name: 'Van Horne',
         borough: 'Plateau/Mile-End',
         link: 'https://www.google.com/maps/@45.5277053,-73.6029956,3a,75y,3.33h,89.64t/data=!3m6!1e1!3m4!1sChhIhl2Si2KwTzmVHQJnPQ!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Vans',
         borough: 'Hochelaga',
         link: 'https://www.google.com/maps/@45.5562254,-73.55384,2a,82.5y,101.71h,97.05t/data=!3m6!1e1!3m4!1sLI77LHmlrqtlHBdUhKcmug!2e0!7i13312!8i6656',
+        type: 'Skatepark',
     },
     {
         name: 'Taz/P45',
         borough: 'Ahuntsic',
         link: 'https://www.google.com/maps/@45.5621993,-73.6374494,3a,22.2y,132.44h,90.38t/data=!3m6!1e1!3m4!1sAlb1nIYnPLzQ9pZx39Bo1g!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Spin',
         borough: 'South Shore',
         link: 'https://www.google.com/maps/@45.444226,-73.43371,3a,75y,74.17h,106.28t/data=!3m7!1e1!3m5!1sm1rUbLgJk_XUYHbQlnu99Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3Dm1rUbLgJk_XUYHbQlnu99Q%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D76.75634%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Prefontaine',
         borough: 'Hochelaga',
         link: 'https://www.google.com/maps/@45.5423203,-73.5540984,3a,75y,105.23h,91.03t/data=!3m7!1e1!3m5!1s_0y_CSy-kCoiqlUEXcTnOA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D_0y_CSy-kCoiqlUEXcTnOA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D94.5919%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Ahuntsic',
         borough: 'Ahuntsic',
         link: 'https://www.google.com/maps/place/Skatepark/@45.5545386,-73.6666869,17z/data=!3m1!4b1!4m5!3m4!1s0x4cc918bb91f9ea87:0x63140536d70012ab!8m2!3d45.5545349!4d-73.6644982',
+        type: 'Skatepark',
     },
     {
         name: 'Rosemont',
         borough: 'Rosemont',
         link: 'https://www.google.com/maps/@45.5387732,-73.5923431,3a,37.9y,292.48h,90.77t/data=!3m6!1e1!3m4!1sZEFqvOtPEv48TvhYVizAFw!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Verdun',
         borough: 'Verdun',
         link: 'https://www.google.com/maps/@45.4648883,-73.5619144,3a,75y,272.54h,82.81t/data=!3m8!1e1!3m6!1sAF1QipNIdReObjYmuQ12p7AjX9peSmvpLBL20Ixbgpn0!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNIdReObjYmuQ12p7AjX9peSmvpLBL20Ixbgpn0%3Dw203-h100-k-no-pi-0-ya274.19843-ro0-fo100!7i8704!8i4352',
+        type: 'Skatepark',
     },
     {
         name: 'Lachine',
         borough: 'Lachine',
-        link: 'https://www.google.com/maps/@45.4384846,-73.6726321,3a,72.3y,259.58h,83.02t/data=!3m7!1e1!3m5!1sdO6I1KCNXgJdke452pDNag!2e0!5s20201101T000000!7i16384!8i8192'
+        link: 'https://www.google.com/maps/@45.4384846,-73.6726321,3a,72.3y,259.58h,83.02t/data=!3m7!1e1!3m5!1sdO6I1KCNXgJdke452pDNag!2e0!5s20201101T000000!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Westmount (Summer Only)',
         borough: 'Westmount',
         link: 'https://www.google.com/maps/@45.4826474,-73.5906038,3a,36y,72.87h,88.52t/data=!3m7!1e1!3m5!1sr3V4U-_0cXzjfwwYBqGSnw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3Dr3V4U-_0cXzjfwwYBqGSnw%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D217.44481%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Papineau Plaza',
         borough: 'Village',
         link: 'https://www.google.com/maps/@45.5253952,-73.5518418,3a,75y,149.84h,89.43t/data=!3m7!1e1!3m5!1skrieTEryadfzfQ5OgLZeMw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DkrieTEryadfzfQ5OgLZeMw%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D140.8417%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'St Lambert',
         borough: 'South Shore',
         link: 'https://www.google.com/maps/@45.5066439,-73.517563,3a,15.2y,242.66h,90.29t/data=!3m6!1e1!3m4!1svA2pb7dyFWjIzYMqg9ysjA!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'VSL',
         borough: 'Saint-Laurent',
         link: 'https://www.google.com/maps/@45.5099445,-73.7008559,3a,48.5y,192.62h,90.54t/data=!3m6!1e1!3m4!1sz4lDYn9MTZxjpFr_fvrd6w!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Sandspit Park',
         borough: 'Village',
         link: 'https://www.google.com/maps/@45.5292632,-73.5598616,3a,67.5y,72.23h,92.8t/data=!3m7!1e1!3m5!1sCTWjF3Le2qJwDBlC_5mZ9A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DCTWjF3Le2qJwDBlC_5mZ9A%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D20.271143%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Jarry',
         borough: 'Park-Extension',
         link: 'https://www.google.com/maps/@45.5368705,-73.6325229,3a,40.1y,87.61h,89.48t/data=!3m6!1e1!3m4!1sE7juLyTJYlum1UtRO6NLCA!2e0!7i16384!8i8192',
+        type: 'Skatepark',
     },
     {
         name: 'Benny',
         borough: 'NDG',
         link: 'https://www.google.com/maps/@45.4664536,-73.6335297,3a,75y,184.1h,87.7t/data=!3m8!1e1!3m6!1sAF1QipMXVuJSqjkbbged9EmwcL3cLKm5uE7tHAKxLh2L!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMXVuJSqjkbbged9EmwcL3cLKm5uE7tHAKxLh2L%3Dw203-h100-k-no-pi-0-ya92.58115-ro-0-fo100!7i6080!8i3040',
+        type: 'Skatepark',
     }     
 ]
