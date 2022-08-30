@@ -8,11 +8,14 @@ const Dropdown = () => {
 
     return (
         <div> 
-            <Link to={'/home'}>
+            <MenuButton to={'/home'}>
                 <FiAlignJustify className="icon"/>
-            </Link>       
+            </MenuButton>       
         </div>  
     )
 }
+const MenuButton = styled(Link)`
+    color: #F5EDDC;
+`
 
 export default Dropdown
