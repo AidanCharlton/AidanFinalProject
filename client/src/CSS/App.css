@@ -1,0 +1,19 @@
+body {
+  margin: 0px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 500;
+}
+
+/* hamburger icon */
+.icon {
+  font-size: 25px;
+  transition: 0.2s;
+}
+
+.icon:active {
+  font-size: 28px;
+}

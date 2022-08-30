@@ -1,82 +1,85 @@
 import React from "react";
 import '../CSS/Lander.css'
+import { Link, useHistory } from "react-router-dom";
+
 
 const Lander = () => {
 
+    const history = useHistory()
     const handleClick = () => {
-        console.log(window.event.target)
+        history.push(`/${window.event.target.id}`)
     }
 
     return (
         <div className="container">
         <div className="gridbox">
-            <button className="west-island box-styling" onClick={() => handleClick()}>
+            <button id="west-island" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">west-island</span>
             </button>
-            <button className="saint-laurent box-styling">
+            <button id="saint-laurent" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">saint-laurent</span>
             </button>
-            <button className="ahuntsic box-styling">
+            <button id="ahuntsic" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">ahuntsic</span>
             </button>
-            <button className="montreal-north box-styling">
-                <span className="textrotate">montreal-north</span>
+            <button id="mtl-north" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">mtl-north</span>
             </button>
-            <button className="mtl-east box-styling">
-                <span className="textrotate">mtl-east</span>
+            <button id="rdp" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">rivière-des-prairies</span>
             </button>
-            <button className="dorval box-styling">
+            <button id="dorval" className="box-styling" onClick={() => handleClick()}>
                 <span class="textrotate">dorval</span>
             </button>
-            <button className="hampstead box-styling">
+            <button id="hampstead" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">hampstead</span>
             </button>
-            <button className="tmr box-styling">
-                <span className="textrotate">TMR</span>
+            <button id="tmr" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">T.M.R</span>
             </button>
-            <button className="cdn box-styling">
-                <span className="textrotate">CDN</span>
+            <button id="cdn" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">C.D.N</span>
             </button>
-            <button className="parc-ex box-styling">
+            <button id="parc-ex" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">parc-ex</span>
             </button>
-            <button className="little-italy box-styling">
-                <span className="textrotate">little-italy</span>
+            <button id="little-italy" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">little<br></br>italy</span>
             </button>
-            <button className="rosemont box-styling">
+            <button id="rosemont" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">rosemont</span>
             </button>
-            <button className="sud-est box-styling">
-                <span className="textrotate">sud-est</span>
+            <button id="mtl-east" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">mtl-east</span>
             </button>
-            <button className="lachine box-styling">
+            <button id="lachine" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">lachine</span>
             </button>
-            <button className="mtl-west box-styling">
+            <button id="mtl-west" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">mtl-west</span>
             </button>
-            <button className="ndg box-styling">
+            <button id="ndg" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">NDG</span>
             </button>
-            <button className="westmount box-styling">
+            <button id="westmount" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">westmount</span>
             </button>
-            <button className="downtown box-styling">
+            <button id="downtown" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">downtown</span>
             </button>
-            <button className="plateau box-styling">
+            <button id="plateau" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">plateau</span>
             </button>
-            <button className="sud-ouest box-styling">
-                <span className="textrotate">sud-ouest</span>
+            <button id="south-west" className="box-styling" onClick={() => handleClick()}>
+                <span className="textrotate">south-west</span>
             </button>
-            <button className="village box-styling">
+            <button id="village" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">village</span>
             </button>
-            <button className="hochelaga box-styling">
+            <button id="hochelaga" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">hochelaga</span>
             </button>
-            <button className="old-port box-styling">
+            <button id="old-port" className="box-styling" onClick={() => handleClick()}>
                 <span className="textrotate">old-port</span>
             </button>
         </div>
