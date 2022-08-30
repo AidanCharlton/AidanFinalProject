@@ -1,34 +1,37 @@
 import React from "react";
-import './CSS/App.css'
+import "./CSS/App.css";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import Lander from "./Pages/Lander";
-import Header from "./Pages/Header"; 
+import Header from "./Pages/Header";
 import ItemList from "./Pages/Dropdown/ItemList";
 import BoroughPage from "./Pages/BoroughPage";
-import Footer from "./Pages/Footer"
+import SpotPage from "./Pages/SpotPage";
+import Footer from "./Pages/Footer";
 
-const App = () => { 
+const App = () => {
   return (
     <StyledWrapper>
-      <Header/>
+      <Header />
       <Switch>
-        <Route exact path='/home'>
+        <Route exact path="/home">
           <Lander />
         </Route>
-        <Route exact path='/textmenu'>
-          <ItemList/>
+        <Route exact path="/textmenu">
+          <ItemList />
         </Route>
         <Route exact path={`/:borough`}>
-          <BoroughPage/>
+          <BoroughPage />
+        </Route>
+        <Route exact path={`/:borough/:id`}>
+          <SpotPage />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </StyledWrapper>
   );
-}
+};
 
-const StyledWrapper = styled.div`
-`
+const StyledWrapper = styled.div``;
 
 export default App;
