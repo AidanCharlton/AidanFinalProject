@@ -23,13 +23,13 @@ const Header = () => {
       }
     };
     fetchBoroughs();
-  }, []);
+  }, [setBoroughs]);
 
   return !boroughs ? (
     <>loading</>
   ) : (
     <Wrapper>
-      <StyledHeader to="/home">
+      <StyledHeader to="/">
         <FiHome className="icon" />
       </StyledHeader>
       <HeaderTitle>Montreal Skate Spots</HeaderTitle>
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 60px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background-color: #15133c;
   opacity: 1;

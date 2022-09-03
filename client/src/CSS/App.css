@@ -1,9 +1,9 @@
 body {
   margin: 0px;
   font-family: "Courier New", Courier, monospace;
-  background-color: #f5eddc;
+  background: linear-gradient(rgb(149, 117, 194), white);
+  height: auto;
 }
-
 h1 {
   font-family: "Courier New", Courier, monospace;
   font-weight: 500;
