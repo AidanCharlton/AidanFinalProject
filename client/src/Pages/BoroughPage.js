@@ -21,55 +21,68 @@ const BoroughPage = () => {
   }, [setBoroughSpots, borough]);
 
   return (
-    <Wrapper>
-      <TitleWrap>
-        <FormalName borough={borough} />
-      </TitleWrap>
+    <>
       {!boroughSpots ? (
-        <Spinner />
+        <SpinWrap>
+          <Spinner />
+        </SpinWrap>
       ) : (
-        <CardWrapper>
-          {boroughSpots.length === 0 ? (
-            <span style={{ textAlign: "center" }}>
-              <TbSkateboard /> No spots to display in this area...yet{" "}
-              <TbSkateboard />
-            </span>
-          ) : (
-            boroughSpots?.map((spot, key) => {
-              return (
-                <SpotCard key={key}>
-                  <StyledLink to={`/borough/${spot._id}`}>
-                    <InfoSide>
-                      {spot.type === "Street" ? (
-                        <IconWrap>
-                          <FaCity className="icon" />
-                        </IconWrap>
-                      ) : (
-                        <IconWrap>
-                          <TbSkateboard className="icon" />
-                        </IconWrap>
-                      )}
-                      {spot.type === "Skatepark" ? (
-                        <SpotType>Park</SpotType>
-                      ) : (
-                        <SpotType>{spot.type}</SpotType>
-                      )}
-                    </InfoSide>
-                    <NameWrapper>
-                      <SpotName>{spot.name}</SpotName>
-                    </NameWrapper>
-                  </StyledLink>
+        <Wrapper>
+          <TitleWrap>
+            <FormalName borough={borough} />
+          </TitleWrap>
+          <CardWrapper>
+            {boroughSpots.length === 0 ? (
+              <span style={{ textAlign: "center" }}>
+                <TbSkateboard /> No spots to display in this area...yet{" "}
+                <TbSkateboard />
+              </span>
+            ) : (
+              boroughSpots?.map((spot, key) => {
+                return (
+                  <SpotCard key={key}>
+                    <StyledLink to={`/borough/${spot._id}`}>
+                      <InfoSide>
+                        {spot.type === "Street" ? (
+                          <IconWrap>
+                            <FaCity className="icon" />
+                          </IconWrap>
+                        ) : (
+                          <IconWrap>
+                            <TbSkateboard className="icon" />
+                          </IconWrap>
+                        )}
+                        {spot.type === "Skatepark" ? (
+                          <SpotType>Park</SpotType>
+                        ) : (
+                          <SpotType>{spot.type}</SpotType>
+                        )}
+                      </InfoSide>
+                      <NameWrapper>
+                        <SpotName>{spot.name}</SpotName>
+                      </NameWrapper>
+                    </StyledLink>
 
-                  <UtilityBar spotId={spot._id} />
-                </SpotCard>
-              );
-            })
-          )}
-        </CardWrapper>
+                    <UtilityBar spotId={spot._id} />
+                  </SpotCard>
+                );
+              })
+            )}
+          </CardWrapper>
+        </Wrapper>
       )}
-    </Wrapper>
+    </>
   );
 };
+
+const SpinWrap = styled.div`
+  width: 100vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -85,8 +98,7 @@ const Wrapper = styled.div`
 const TitleWrap = styled.div`
   display: flex;
   width: 900px;
-  justify-content: left;
-  padding-top: 40px;
+  justify-content: center;
 `;
 
 const CardWrapper = styled.div`
