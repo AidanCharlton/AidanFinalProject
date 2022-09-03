@@ -40,17 +40,17 @@ const getSpots = async (req, res) => {
     }
 }
 
-const getSpot = async (req, res) => {  
+const getSpot = async (req, res) => {
     const { id } = req.params
     try {
-        const objectId  = new ObjectId(id)
+        const objectId = new ObjectId(id)
         const client = new MongoClient(MONGO_URI, options);
         await client.connect();
         const db = client.db("montrealskatespots");
         const spot = await db.collection("spots").findOne(objectId)
 
         res.status(200).json({
-            status:200,
+            status: 200,
             data: spot,
         })
     } catch (err) {
@@ -66,8 +66,8 @@ const getBorough = async (req, res) => {
         const db = client.db("montrealskatespots");
         const spots = await db.collection("spots").find().toArray()
         const boroughSpots = spots.filter((spot) => {
-        if (spot.borough.toLowerCase() === borough) return spot;
-    })    
+            if (spot.borough.toLowerCase() === borough) return spot;
+        })
         res.status(200).json({
             status: 200,
             data: boroughSpots

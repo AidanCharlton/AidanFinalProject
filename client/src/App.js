@@ -14,7 +14,7 @@ const App = () => {
     <StyledWrapper>
       <Header />
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Lander />
         </Route>
         <Route exact path="/textmenu">
@@ -32,6 +32,8 @@ const App = () => {
   );
 };
 
-const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div`
+  min-height: 100vh;
+`;
 
 export default App;

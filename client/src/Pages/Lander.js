@@ -1,21 +1,17 @@
 import React from "react";
 import '../CSS/Lander.css'
-import styled from 'styled-components'
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const Lander = () => {
-
     const history = useHistory()
     const handleClick = () => {
         history.push(`/${window.event.target.innerText}`)
     }
 
-
     return (
         <div className="container">
             <div className="gridbox">
-
                 <div id="west-island" className="box-styling" onClick={() => handleClick()}>
                     <label className="textrotate">west-island</label>
                 </div>

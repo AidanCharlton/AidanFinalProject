@@ -1,3 +1,13 @@
+/* utility icons */
+
+.heart {
+  font-size: 22px;
+}
+
+.bookmark {
+  font-size: 22px;
+}
+
 /* Spinner */
 
 @keyframes rotate {

@@ -23,7 +23,7 @@ const FooterWrapper = styled.div`
   margin: 0px;
   background-color: white;
   width: 100vw;
-  height: 30px;
+  height: 40px;
   background-color: #15133c;
   color: white;
 `;
