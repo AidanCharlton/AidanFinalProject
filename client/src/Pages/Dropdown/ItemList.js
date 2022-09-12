@@ -5,16 +5,16 @@ import { SkateSpotContext } from "../../Contexts/SkateSpotContext";
 import { Link } from "react-router-dom";
 
 const ItemList = () => {
-    const {boroughs} = useContext(SkateSpotContext)
+    const { boroughs } = useContext(SkateSpotContext)
     return (
         <>
-                <LinkDiv>
+            <LinkDiv>
                 {
                     boroughs.map((x) => {
-                        return <LinkItem to={`/borough/${x}`}>{x}</LinkItem>
+                        return <LinkItem to={`/${x.toLowerCase()}`}>{x}</LinkItem>
                     })
                 }
-                </LinkDiv>
+            </LinkDiv>
         </>
     )
 }

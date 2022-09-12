@@ -1,15 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FiHome } from "react-icons/fi";
 
 import { SkateSpotContext } from "../Contexts/SkateSpotContext";
 import Dropdown from "./Dropdown/Dropdown";
 
 const Header = () => {
   const { boroughs, setBoroughs } = useContext(SkateSpotContext);
+  const [openMenu, setOpenMenu] = useState();
 
   useEffect(() => {
+    setOpenMenu(false);
     const fetchBoroughs = async () => {
       try {
         const res = await fetch("/boroughs");
@@ -28,29 +29,38 @@ const Header = () => {
   return !boroughs ? (
     <>loading</>
   ) : (
-    <Wrapper>
-      <StyledHeader to="/">
-        <FiHome className="icon" />
-      </StyledHeader>
-      <HeaderTitle>Montreal Skate Spots</HeaderTitle>
-      <Dropdown />
-    </Wrapper>
+    <HigherWrap>
+      <Wrapper>
+        <InnerWrapper>
+          <StyledHeader to="/">
+            <HeaderTitle>Montreal Skate Spots</HeaderTitle>
+          </StyledHeader>
+          <LinkWrap>
+            <SignIn to={"/signup"}>Login</SignIn>
+          </LinkWrap>
+        </InnerWrapper>
+      </Wrapper>
+    </HigherWrap>
   );
 };
 
 const Wrapper = styled.div`
   position: sticky;
-  top: 0px;
-  padding: 0px;
-  margin: 0px;
-  background-color: white;
   width: 100vw;
-  height: 60px;
+  height: 70px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  padding: 0px 0px;
   align-items: center;
-  background-color: #15133c;
+  background-color: #192168;
   opacity: 1;
+`;
+
+const InnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
 `;
 
 const HeaderTitle = styled.h1`
@@ -60,6 +70,29 @@ const HeaderTitle = styled.h1`
 const StyledHeader = styled(Link)`
   text-decoration: none;
   color: #f5eddc;
+`;
+
+const LinkWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+`;
+
+const HigherWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SignIn = styled(Link)`
+  color: white;
+  text-decoration: none;
+`;
+
+const SignUp = styled(Link)`
+  padding: 20px;
+  color: white;
+  text-decoration: none;
 `;
 
 export default Header;

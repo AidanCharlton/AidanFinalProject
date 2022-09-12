@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <FooterWrapper>
-      <FooterNav>Sign-In</FooterNav>
-      <FooterNav>Submit</FooterNav>
+      <FooterNav to={"/signin"}>Sign In</FooterNav>
+      <FooterNav to={"/signup"}>Sign Up</FooterNav>
       <FooterNav>About</FooterNav>
       <FooterNav>Contact</FooterNav>
     </FooterWrapper>
@@ -21,10 +21,9 @@ const FooterWrapper = styled.div`
   bottom: 0px;
   padding: 0px;
   margin: 0px;
-  background-color: white;
   width: 100vw;
-  height: 40px;
-  background-color: #15133c;
+  height: 70px;
+  background-color: #192168;
   color: white;
 `;
 

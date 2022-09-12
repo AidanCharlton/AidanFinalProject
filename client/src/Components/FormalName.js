@@ -86,7 +86,7 @@ const FormalTitle = styled.h1`
   padding-left: 20px;
   font-weight: 500;
   font-size: 25px;
-  color: black;
+  color: #192168;
   font-weight: 500;
 `;
 

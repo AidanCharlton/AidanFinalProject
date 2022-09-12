@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   font-family: "Courier New", Courier, monospace;
-  background: linear-gradient(rgb(149, 117, 194), white);
+  background-color: white;
   height: auto;
 }
 h1 {

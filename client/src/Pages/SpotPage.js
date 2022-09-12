@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Spinner from "../Components/Spinner";
 import Streetview from "../Components/Streetview";
+import UtilityBar from "../Components/UtilityBar";
 
 const SpotPage = () => {
   const [singleSpot, setSingleSpot] = useState();
@@ -21,19 +22,30 @@ const SpotPage = () => {
   return (
     <SpotWrapper>
       {!singleSpot ? (
-        <Spinner />
+        <SpinWrap>
+          <Spinner />
+        </SpinWrap>
       ) : (
         <SpotWrapper>
           <SpotCard>
             <StyledText>{singleSpot.name}</StyledText>
-            <StyledText>{singleSpot.borough}</StyledText>
             <Streetview singleSpot={singleSpot} />
+            <UtilityBar />
           </SpotCard>
         </SpotWrapper>
       )}
     </SpotWrapper>
   );
 };
+
+const SpinWrap = styled.div`
+  width: 100vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const SpotWrapper = styled.div`
   margin-top: 30px;
@@ -50,7 +62,7 @@ const SpotCard = styled.div`
   padding: 20px;
   text-align: center;
   width: 800px;
-  border: solid 1px black;
+  box-shadow: 0px 0px 10px 1px lightgray;
 `;
 
 const StyledText = styled.h1`

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const Lander = () => {
     const history = useHistory()
     const handleClick = () => {
-        history.push(`/${window.event.target.innerText}`)
+        history.push(`/borough/${window.event.target.innerText}`)
     }
 
     return (
@@ -80,6 +80,9 @@ const Lander = () => {
                 </button>
                 <button id="old-port" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">old-port</span>
+                </button>
+                <button id="south-shore" className="box-styling" onClick={() => handleClick()}>
+                    <span className="textrotate">south-shore</span>
                 </button>
             </div>
         </div>

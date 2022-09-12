@@ -7,7 +7,10 @@ import Header from "./Pages/Header";
 import ItemList from "./Pages/Dropdown/ItemList";
 import BoroughPage from "./Pages/BoroughPage";
 import SpotPage from "./Pages/SpotPage";
+import Bookmarks from "./Pages/Bookmarks";
 import Footer from "./Pages/Footer";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
 
 const App = () => {
   return (
@@ -20,11 +23,23 @@ const App = () => {
         <Route exact path="/textmenu">
           <ItemList />
         </Route>
-        <Route exact path={`/:borough`}>
+        <Route exact path={`/borough/:borough`}>
           <BoroughPage />
         </Route>
-        <Route exact path={`/:borough/:id`}>
+        <Route exact path={`/borough/:borough/:id`}>
           <SpotPage />
+        </Route>
+        <Route exact path="/bookmarks">
+          <Bookmarks />
+        </Route>
+        <Route exact path="/signin">
+          <SignIn />
+        </Route>
+        <Route exact path="/signin">
+          <SignIn />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
         </Route>
       </Switch>
       <Footer />
