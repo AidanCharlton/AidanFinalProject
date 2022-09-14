@@ -11,6 +11,7 @@ import Bookmarks from "./Pages/Bookmarks";
 import Footer from "./Pages/Footer";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import Map from "./Pages/Map";
 
 const App = () => {
   return (
@@ -35,11 +36,11 @@ const App = () => {
         <Route exact path="/signin">
           <SignIn />
         </Route>
-        <Route exact path="/signin">
-          <SignIn />
-        </Route>
         <Route exact path="/signup">
           <SignUp />
+        </Route>
+        <Route exact path="/map">
+          <Map />
         </Route>
       </Switch>
       <Footer />

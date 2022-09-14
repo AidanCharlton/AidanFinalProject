@@ -157,13 +157,15 @@ const createUser = async (req, res) => {
     await client.connect();
     const db = client.db("montrealskatespots");
     const userData = await db.collection("users").find().toArray();
-    const emails = userData.map((user) => { return user.email; })
-    const findMatch = emails.find((email) => email === userEmail)
+    const emails = userData.map((user) => {
+      return user.email;
+    });
+    const findMatch = emails.find((email) => email === userEmail);
     if (findMatch === userEmail) {
       res.status(400).json({
         status: 400,
-        message: 'An account with this email already exists.'
-      })
+        message: "An account with this email already exists.",
+      });
     }
 
     res.status(200).json({
@@ -174,7 +176,51 @@ const createUser = async (req, res) => {
     console.error(err);
     res.status(400).json({
       status: 400,
-      message: "request failed"
+      message: "request failed",
+    });
+  } finally {
+    await client.close();
+  }
+};
+
+const userSignIn = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+  const userEmail = req.body.email;
+  const userPassword = req.body.password;
+  try {
+    await client.connect();
+    const db = client.db("montrealskatespots");
+    const userData = await db.collection("users").find().toArray();
+    userData.map((user) => {
+      if (user.email === userEmail && user.password === userPassword) {
+        res.status(200).json({
+          status: 200,
+          message: "Successfully Signed-In.",
+          body: user,
+        });
+      } else if (user.email === userEmail && user.password !== userPassword) {
+        res.status(400).json({
+          status: 400,
+          message: "Incorrect Password.",
+        });
+      } else if (user.email !== userEmail) {
+        res.status(400).json({
+          status: 400,
+          message: "Incorrect Email.",
+        });
+      } else if (user.email !== userEmail && user.password !== userPassword) {
+        res.status(400).json({
+          status: 400,
+          message: "Incorrect Username And Password.",
+        });
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({
+      status: 400,
+      message: "request failed",
+      error: err,
     });
   } finally {
     await client.close();
@@ -213,11 +259,12 @@ const addBookmark = async (req, res) => {
     const db = client.db("montrealskatespots");
     const find = await db
       .collection("users")
-      .updateOne({ user: "admin" }, { $set: { bookmarks: req.body } });
+      .updateOne({ user: req.user }, { $set: { bookmarks: req.body } });
     res.status(200).json({
       status: 200,
       message: "success",
       body: req.body,
+      user: req.user,
     });
   } catch (err) {
     res.status(400).json({ message: "failure" });
@@ -236,4 +283,5 @@ module.exports = {
   createUser,
   addLikes,
   addBookmark,
+  userSignIn,
 };

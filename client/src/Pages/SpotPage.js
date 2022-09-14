@@ -30,7 +30,7 @@ const SpotPage = () => {
           <SpotCard>
             <StyledText>{singleSpot.name}</StyledText>
             <Streetview singleSpot={singleSpot} />
-            <UtilityBar />
+            <UtilityBar spotId={id} />
           </SpotCard>
         </SpotWrapper>
       )}

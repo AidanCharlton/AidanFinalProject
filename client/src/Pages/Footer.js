@@ -7,8 +7,6 @@ const Footer = () => {
     <FooterWrapper>
       <FooterNav to={"/signin"}>Sign In</FooterNav>
       <FooterNav to={"/signup"}>Sign Up</FooterNav>
-      <FooterNav>About</FooterNav>
-      <FooterNav>Contact</FooterNav>
     </FooterWrapper>
   );
 };

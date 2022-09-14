@@ -28,7 +28,7 @@ const Lander = () => {
                     <span className="textrotate">rdp</span>
                 </button>
                 <button id="dorval" className="box-styling" onClick={() => handleClick()}>
-                    <span class="textrotate">dorval</span>
+                    <span className="textrotate">dorval</span>
                 </button>
                 <button id="hampstead" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">hampstead</span>

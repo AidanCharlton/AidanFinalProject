@@ -9,10 +9,10 @@ const SignUpBox = ({ handleEmail, handlePassword, handleSubmit }) => {
                 <p>Create Account</p>
                 <StyledInput type="text" htmlFor="email" placeholder="email" onChange={handleEmail} />
                 <StyledInput type="password" htmlFor="password" placeholder="password" onChange={handlePassword} />
-                <p>Already a member? <Link to='/signin'>Sign In</Link></p>
+                <p>Already a member? <Link to='/signin' style={{ 'color': '#AF1E2D' }} > Sign In</Link></p>
                 <SignUpButton onClick={handleSubmit}>Sign Up</SignUpButton>
             </InnerBox>
-        </StyledBox>
+        </StyledBox >
     )
 }
 

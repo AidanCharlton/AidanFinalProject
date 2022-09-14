@@ -1,16 +1,25 @@
 import styled from "styled-components"
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import { UserContext } from "../Contexts/UserContext";
 
-const SignInBox = () => {
 
+const SignInBox = ({ handleEmail, handlePassword, handleSubmit, response, hasError }) => {
+    const { isLoggedIn } = useContext(UserContext);
     return (
         <StyledBox>
             <InnerBox>
                 <p>Sign In</p>
-                <StyledInput type="text" htmlFor="email" placeholder="email" />
-                <StyledInput type="password" htmlFor="password" placeholder="password" />
-                <p>Don't have an account? <Link to='/signup'>Create One</Link></p>
-                <SignInButton>Sign In</SignInButton>
+                <StyledInput type="text" htmlFor="email" placeholder="email" onChange={handleEmail} />
+                <StyledInput type="password" htmlFor="password" placeholder="password" onChange={handlePassword} />
+                {
+                    !hasError ? <></> : <ErrorBox>{response}</ErrorBox>
+                }
+                {
+                    isLoggedIn ? <Success>Success!</Success> : <></>
+                }
+                <p>Don't have an account? <Link to='/signup' style={{ 'color': '#AF1E2D' }}>Create One</Link></p>
+                <SignInButton onClick={handleSubmit}>Sign In</SignInButton>
             </InnerBox>
         </StyledBox>
     )
@@ -38,6 +47,26 @@ const StyledInput = styled.input`
     width: 300px;
     padding: 5px;
     margin: 10px;
+`
+
+const ErrorBox = styled.div`
+    width: 300px;
+    height: 30px;
+    background-color: #AF1E2D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+`
+
+const Success = styled.div`
+    width: 300px;
+    height: 30px;
+    background-color: #00620b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 `
 
 const SignInButton = styled.button`

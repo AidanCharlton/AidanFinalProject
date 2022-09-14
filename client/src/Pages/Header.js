@@ -1,34 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-import { SkateSpotContext } from "../Contexts/SkateSpotContext";
-import Dropdown from "./Dropdown/Dropdown";
+import { UserContext } from "../Contexts/UserContext";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  const { boroughs, setBoroughs } = useContext(SkateSpotContext);
-  const [openMenu, setOpenMenu] = useState();
+  const { isLoggedIn, setIsLoggedIn, userBookmarks } = useContext(UserContext);
+  let history = useHistory();
 
-  useEffect(() => {
-    setOpenMenu(false);
-    const fetchBoroughs = async () => {
-      try {
-        const res = await fetch("/boroughs");
-        const data = await res.json();
-        if (!res.ok) {
-          throw Error(`${res.status} ${res.statusText}`);
-        }
-        setBoroughs(data?.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchBoroughs();
-  }, [setBoroughs]);
+  useEffect(() => { }, [userBookmarks]);
 
-  return !boroughs ? (
-    <>loading</>
-  ) : (
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    history.push("/");
+  };
+
+  return (
     <HigherWrap>
       <Wrapper>
         <InnerWrapper>
@@ -36,7 +23,21 @@ const Header = () => {
             <HeaderTitle>Montreal Skate Spots</HeaderTitle>
           </StyledHeader>
           <LinkWrap>
-            <SignIn to={"/signup"}>Login</SignIn>
+            {isLoggedIn ? (
+              <>
+                <SignIn to={"/bookmarks"}>
+                  Bookmarks
+                  <BookmarkNumber>({userBookmarks?.length})</BookmarkNumber>
+                </SignIn>
+                <SignOut onClick={handleSignOut}>Sign Out</SignOut>
+              </>
+            ) : (
+              <>
+                <SignIn to={"/signin"}>Sign In</SignIn>
+                <SignUp to={"/signup"}>Sign Up</SignUp>
+
+              </>
+            )}
           </LinkWrap>
         </InnerWrapper>
       </Wrapper>
@@ -88,11 +89,26 @@ const SignIn = styled(Link)`
   color: white;
   text-decoration: none;
 `;
-
 const SignUp = styled(Link)`
-  padding: 20px;
   color: white;
   text-decoration: none;
+  margin-left: 20px;
+`;
+
+const SignOut = styled.button`
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+`;
+
+const BookmarkNumber = styled.span`
+  color: red;
+  font-weight: bold;
+  margin: 10px;
 `;
 
 export default Header;

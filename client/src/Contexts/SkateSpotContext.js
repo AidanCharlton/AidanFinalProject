@@ -7,8 +7,6 @@ export const SkateSpotProvider = ({ children }) => {
   const [currentSpot, setCurrentSpot] = useState();
   const [allSpots, setAllSpots] = useState([]);
   const [selectedBorough, setSelectedBorough] = useState();
-  const [bookmarkedSpots, setBookmarkedSpots] = useState([]);
-  const [likedSpots, setLikedSpots] = useState([]);
 
   return (
     <SkateSpotContext.Provider
@@ -21,10 +19,6 @@ export const SkateSpotProvider = ({ children }) => {
         setAllSpots,
         selectedBorough,
         setSelectedBorough,
-        bookmarkedSpots,
-        setBookmarkedSpots,
-        likedSpots,
-        setLikedSpots,
       }}
     >
       {children}

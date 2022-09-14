@@ -17,6 +17,7 @@ const {
   addLikes,
   addBookmark,
   getUser,
+  userSignIn,
 } = require("./data/handler");
 
 app.get("/spots", getSpots);
@@ -26,6 +27,7 @@ app.get("/boroughs/:borough", getBorough);
 app.get("/users", getUsers);
 app.get("/users/:id", getUser);
 app.post("/adduser", createUser);
+app.post("/signin", userSignIn);
 app.post("/likes", addLikes);
 app.post("/bookmarks", addBookmark);
 
