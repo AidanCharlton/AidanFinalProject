@@ -16,4 +16,23 @@ const batchImport = async () => {
   client.close();
 };
 
-batchImport();
+const userLikes = {
+  user: "admin",
+  likes: [],
+  bookmarks: [],
+};
+
+const updateLikes = async () => {
+  const client = new MongoClient(MONGO_URI, options);
+  try {
+    await client.connect();
+    const db = client.db("montrealskatespots");
+    await db.collection("admindata").insertOne(userLikes);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await client.close();
+  }
+};
+
+updateLikes();

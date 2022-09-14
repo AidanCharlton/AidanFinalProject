@@ -1,0 +1,69 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import styled from 'styled-components'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { map } from 'leaflet';
+
+const Map = ({ bookmarks }) => {
+    const [mapArray, setMapArray] = useState();
+
+
+    useEffect(() => {
+        const coordinateArray = bookmarks.map((mark) => {
+            return {
+                name: mark.data.name,
+                borough: mark.data.borough,
+                id: mark.data._id,
+                coordinates: [
+                    mark.data.link.split('/maps/@')[1].split('/data')[0].split(',')[0],
+                    mark.data.link.split('/maps/@')[1].split('/data')[0].split(',')[1]
+                ],
+                streetview: mark.data.link,
+
+            }
+        })
+        setMapArray(coordinateArray)
+    }, [])
+    return !mapArray ? <></> : (
+        <MapContainer center={[45.5019, -73.5674]} zoom={13} scrollWheelZoom={false} className="Map">
+            <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {
+                mapArray?.map((mark) => {
+                    return (
+                        <Marker position={mark.coordinates}>
+                            <Popup>
+                                <Popuptext>
+                                    <InfoText><b>{mark.name}</b></InfoText>
+                                    <InfoText><i>{mark.borough}</i></InfoText>
+                                    <StyledLink to={`/borough/${mark.borough}/${mark.id}`}>Streetview</StyledLink>
+                                </Popuptext>
+                            </Popup>
+                        </Marker>
+                    )
+                })
+            }
+
+        </MapContainer>
+    )
+}
+
+const Popuptext = styled.div`
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+`
+const InfoText = styled.div`
+    margin: 0px;
+    padding: 0px;
+`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`
+
+export default Map

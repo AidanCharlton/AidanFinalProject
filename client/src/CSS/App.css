@@ -1,12 +1,18 @@
 body {
   margin: 0px;
   font-family: "Courier New", Courier, monospace;
-  background: linear-gradient(rgb(149, 117, 194), white);
+  background-color: white;
   height: auto;
 }
 h1 {
   font-family: "Courier New", Courier, monospace;
   font-weight: 500;
+}
+
+.Map {
+  width: 800px;
+  height: 500px;
+  overflow: hidden;
 }
 
 /* hamburger icon */

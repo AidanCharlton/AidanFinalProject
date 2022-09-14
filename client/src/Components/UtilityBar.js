@@ -1,29 +1,52 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import '../CSS/Component.css'
-import { FiBookmark, FiHeart, FiSend } from "react-icons/fi";
+import { FiBookmark } from "react-icons/fi";
+import { UserContext } from "../Contexts/UserContext"
 
 const UtilityBar = ({ spotId }) => {
+    const { isLoggedIn, currentUser, userBookmarks, setUserBookmarks } = useContext(UserContext);
 
-    const [isLiked, setIsLiked] = useState();
-    const [isBookmarked, setIsBookmarked] = useState();
+    const handleBookmarked = () => {
+        let newBookmarks = userBookmarks
+        if (!userBookmarks?.includes(spotId)) {
+            newBookmarks = [...newBookmarks, spotId]
+        } else {
+            newBookmarks = newBookmarks.filter(spot => spot !== spotId)
+        }
+        setUserBookmarks(newBookmarks)
+        const postBookmark = async () => {
+            try {
+                const response = await fetch('/bookmarks', {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
 
+                    body: JSON.stringify(newBookmarks),
+                    user: currentUser._id,
+                })
+                const res = await response.json()
+
+                console.log(res);
+            } catch (err) {
+                console.error(`Error: ${err}`);
+            }
+        }
+        postBookmark()
+    }
 
     return (
         <ButtonWrapper>
-            <ButtonBox onClick={() => setIsBookmarked(!isBookmarked)}>
-                <FiBookmark className="bookmark" style={isBookmarked ? { 'fill': 'black' } : { 'fill': 'white' }} />
-            </ButtonBox>
-
-            <ButtonBox onClick={() => setIsLiked(!isLiked)}>
-                <FiHeart className="heart" style={isLiked ? { 'fill': 'red', 'color': 'red' } : { 'fill': 'white' }} />
+            <ButtonBox disabled={!isLoggedIn} onClick={() => handleBookmarked()}>
+                <FiBookmark className="bookmark"
+                    style={userBookmarks?.includes(spotId) ? { 'fill': '#192168', 'color': '#192168' } : { 'fill': 'white' }} />
             </ButtonBox>
         </ButtonWrapper>
     )
 };
 
 const ButtonWrapper = styled.div`
-    width: 100px;
     padding: 10px 0px;
     display: flex;
     justify-content: space-around;
@@ -32,7 +55,11 @@ const ButtonWrapper = styled.div`
 
 const ButtonBox = styled.button`
     border: none;
-    background-color: white;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 `
 
 export default UtilityBar;

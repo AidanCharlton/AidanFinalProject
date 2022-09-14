@@ -1,19 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FiAlignJustify } from "react-icons/fi";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const Dropdown = () => {
+const Dropdown = ({ setOpenMenu, openMenu }) => {
   return (
     <div>
-      <MenuButton to={"/"}>
-        <FiAlignJustify className="icon" />
+      <MenuButton onClick={() => setOpenMenu(!openMenu)}>
+        {!openMenu ? (
+          <IoIosArrowDown className="icon" />
+        ) : (
+          <IoIosArrowUp className="icon" />
+        )}
       </MenuButton>
     </div>
   );
 };
-const MenuButton = styled(Link)`
-  color: #f5eddc;
+const MenuButton = styled.button`
+  color: white;
+  background: transparent;
+  border: none;
 `;
 
 export default Dropdown;

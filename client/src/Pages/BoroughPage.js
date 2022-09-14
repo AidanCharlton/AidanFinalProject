@@ -41,7 +41,7 @@ const BoroughPage = () => {
               boroughSpots?.map((spot, key) => {
                 return (
                   <SpotCard key={key}>
-                    <StyledLink to={`/borough/${spot._id}`}>
+                    <StyledLink to={`/borough/${spot.borough}/${spot._id}`}>
                       <InfoSide>
                         {spot.type === "Street" ? (
                           <IconWrap>
@@ -92,17 +92,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 `;
 
 const TitleWrap = styled.div`
   display: flex;
-  width: 900px;
+  width: 750px;
   justify-content: center;
 `;
 
 const CardWrapper = styled.div`
-  width: 900px;
+  width: 750px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -119,12 +119,12 @@ const SpotCard = styled.div`
   align-items: center;
   height: auto;
   width: 100%;
-  margin: 10px;
+  margin: 25px 0px;
   padding: 5px;
-  border: solid 1px black;
-  transition: 0.3s;
+  box-shadow: 0px 0px 5px 1px lightgray;
+  transition: 0.5s;
   &:hover {
-    box-shadow: 0px 0px 0px 1px black;
+    box-shadow: 0px 0px 5px 1px #192168;
   }
 `;
 
@@ -134,7 +134,7 @@ const StyledLink = styled(Link)`
   flex-direction: row;
   justify-content: left;
   align-items: center;
-  color: black;
+  color: #192168;
   width: 100%;
 `;
 
@@ -160,7 +160,7 @@ const InfoSide = styled.div`
 
 const SpotType = styled.div`
   font-size: 15px;
-  color: red;
+  color: #af1e2d;
 `;
 
 const IconWrap = styled.div`
