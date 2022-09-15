@@ -74,8 +74,8 @@ const FormalName = ({ borough }) => {
         break;
       case "old-port":
         setFormalName("Old Montreal");
-      default:
         break;
+      default:
     }
   }, [setFormalName, borough]);
   return <FormalTitle>{formalName}</FormalTitle>;

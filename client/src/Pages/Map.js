@@ -2,15 +2,15 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { map } from 'leaflet';
 
 const Map = ({ bookmarks }) => {
     const [mapArray, setMapArray] = useState();
 
 
     useEffect(() => {
-        const coordinateArray = bookmarks.map((mark) => {
+        const coordinateArray = bookmarks?.map((mark, id) => {
             return {
+                key: id,
                 name: mark.data.name,
                 borough: mark.data.borough,
                 id: mark.data._id,
@@ -23,9 +23,9 @@ const Map = ({ bookmarks }) => {
             }
         })
         setMapArray(coordinateArray)
-    }, [])
+    }, [bookmarks])
     return !mapArray ? <></> : (
-        <MapContainer center={[45.5019, -73.5674]} zoom={13} scrollWheelZoom={false} className="Map">
+        <MapContainer center={[45.5019, -73.5674]} zoom={12} scrollWheelZoom={true} className="Map" style={{ 'boxShadow': '0px 0px 10px 1px lightgray', 'border': 'solid 1px lightgray' }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -56,6 +56,7 @@ const Popuptext = styled.div`
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 `
 const InfoText = styled.div`
     margin: 0px;

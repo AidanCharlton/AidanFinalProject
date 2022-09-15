@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-const SignUpBox = ({ handleEmail, handlePassword, handleSubmit }) => {
+const SignUpBox = ({ handleEmail, handlePassword, handleSubmit, error }) => {
 
     return (
         <StyledBox>
@@ -9,6 +9,9 @@ const SignUpBox = ({ handleEmail, handlePassword, handleSubmit }) => {
                 <p>Create Account</p>
                 <StyledInput type="text" htmlFor="email" placeholder="email" onChange={handleEmail} />
                 <StyledInput type="password" htmlFor="password" placeholder="password" onChange={handlePassword} />
+                {
+                    error ? <ErrorBox>{error}</ErrorBox> : <></>
+                }
                 <p>Already a member? <Link to='/signin' style={{ 'color': '#AF1E2D' }} > Sign In</Link></p>
                 <SignUpButton onClick={handleSubmit}>Sign Up</SignUpButton>
             </InnerBox>
@@ -55,6 +58,17 @@ const SignUpButton = styled.button`
     &:active {
         box-shadow: 0px 0px 5px 1px lightgray;
     }
+`
+
+const ErrorBox = styled.div`
+    width: 300px;
+    height: 50px;
+    background-color: #AF1E2D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
 `
 
 export default SignUpBox

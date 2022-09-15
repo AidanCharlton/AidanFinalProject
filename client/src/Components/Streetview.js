@@ -16,7 +16,7 @@ const StreetMap = ({ singleSpot }) => {
 
     return (
         <FrameWrapper>
-            <p>{coordinates.lng}, {coordinates.lat}</p>
+            <p style={{ 'color': 'grey' }}>{coordinates.lng}, {coordinates.lat}</p>
             <iframe
                 src={singleSpot.iframe}
                 width="600"

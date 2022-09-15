@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { UserContext } from "../Contexts/UserContext";
 
 const Footer = () => {
+  const { isLoggedIn } = useContext(UserContext);
   return (
     <FooterWrapper>
-      <FooterNav to={"/signin"}>Sign In</FooterNav>
-      <FooterNav to={"/signup"}>Sign Up</FooterNav>
+      {isLoggedIn ? (
+        <>
+          <FooterNav to={"/"}>Home</FooterNav>
+          <FooterNav to={"/bookmarks"}>Bookmarks</FooterNav>
+        </>
+      ) : (
+        <>
+          <FooterNav to={"/"}>Home</FooterNav>
+          <FooterNav to={"/signin"}>Sign In</FooterNav>
+          <FooterNav to={"/signup"}>Sign Up</FooterNav>
+        </>
+      )}
     </FooterWrapper>
   );
 };

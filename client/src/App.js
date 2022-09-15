@@ -11,7 +11,7 @@ import Bookmarks from "./Pages/Bookmarks";
 import Footer from "./Pages/Footer";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
-import Map from "./Pages/Map";
+import SuccessfulSignUp from "./Components/SuccessfulSignUp";
 
 const App = () => {
   return (
@@ -39,8 +39,11 @@ const App = () => {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        <Route exact path="/map">
-          <Map />
+        <Route exact path="/itemlist">
+          <ItemList />
+        </Route>
+        <Route exact path="/success">
+          <SuccessfulSignUp />
         </Route>
       </Switch>
       <Footer />

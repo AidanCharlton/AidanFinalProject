@@ -25,7 +25,7 @@ const Bookmarks = () => {
         <Wrapper>
             {bookmarks === undefined ? <Spinner /> : (
                 <>
-                    <h1>Bookmarks</h1>
+                    <h1></h1>
                     <Map bookmarks={bookmarks} />
                     <BookmarkWrapper>
                         {
@@ -36,7 +36,6 @@ const Bookmarks = () => {
                                             <p>{spot.data.name}</p>
                                         </Titles>
                                         <UtilityWrapper>
-                                            <StreetView to={`/borough/${spot.data.borough}/${spot.data._id}`}>Streetview</StreetView>
                                             <UtilityBar spotId={spot.data._id} />
                                         </UtilityWrapper>
                                     </BookmarkArea>

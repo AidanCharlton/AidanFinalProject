@@ -1,14 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, userBookmarks } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn, userBookmarks, currentUser } = useContext(UserContext);
   let history = useHistory();
-
-  useEffect(() => { }, [userBookmarks]);
 
   const handleSignOut = () => {
     setIsLoggedIn(false);
@@ -25,6 +23,7 @@ const Header = () => {
           <LinkWrap>
             {isLoggedIn ? (
               <>
+                <Welcome>Welcome, {currentUser.email.split('@')[0]}</Welcome>
                 <SignIn to={"/bookmarks"}>
                   Bookmarks
                   <BookmarkNumber>({userBookmarks?.length})</BookmarkNumber>
@@ -44,6 +43,12 @@ const Header = () => {
     </HigherWrap>
   );
 };
+
+const Welcome = styled.h1`
+  color: white;
+  font-size: 14px;
+  margin-right: 20px;
+`
 
 const Wrapper = styled.div`
   position: sticky;
@@ -106,9 +111,9 @@ const SignOut = styled.button`
 `;
 
 const BookmarkNumber = styled.span`
-  color: red;
+  color: #fbc4c4;
   font-weight: bold;
-  margin: 10px;
+  margin: 5px;
 `;
 
 export default Header;

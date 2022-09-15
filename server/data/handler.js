@@ -152,7 +152,7 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const userEmail = req.body.email;
-  const UserPassword = req.body.password;
+  const userPassword = req.body.password;
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
@@ -166,14 +166,25 @@ const createUser = async (req, res) => {
         status: 400,
         message: "An account with this email already exists.",
       });
+    } else if (userPassword.length < 8) {
+      res.status(400).json({
+        status: 400,
+        message: "Password needs to be 8 characters.",
+        passwordlength: userPassword.length,
+      });
+    } else if (!userEmail.includes("@")) {
+      res.status(400).json({
+        status: 400,
+        message: "Email is Invalid.",
+      });
+    } else {
+      const uploadInfo = await db.collection("users").insertOne(req.body);
+      res.status(200).json({
+        status: 200,
+        message: "success",
+      });
     }
-
-    res.status(200).json({
-      status: 200,
-      message: "success",
-    });
   } catch (err) {
-    console.error(err);
     res.status(400).json({
       status: 400,
       message: "request failed",
@@ -190,31 +201,26 @@ const userSignIn = async (req, res) => {
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
-    const userData = await db.collection("users").find().toArray();
-    userData.map((user) => {
-      if (user.email === userEmail && user.password === userPassword) {
-        res.status(200).json({
-          status: 200,
-          message: "Successfully Signed-In.",
-          body: user,
-        });
-      } else if (user.email === userEmail && user.password !== userPassword) {
-        res.status(400).json({
-          status: 400,
-          message: "Incorrect Password.",
-        });
-      } else if (user.email !== userEmail) {
-        res.status(400).json({
-          status: 400,
-          message: "Incorrect Email.",
-        });
-      } else if (user.email !== userEmail && user.password !== userPassword) {
-        res.status(400).json({
-          status: 400,
-          message: "Incorrect Username And Password.",
-        });
-      }
-    });
+    const loginMatch = await db
+      .collection("users")
+      .findOne({ email: userEmail });
+
+    if (loginMatch === undefined) {
+      res.status(400).json({
+        status: 400,
+        message: "Incorrect Email.",
+      });
+    } else if (loginMatch.password !== userPassword) {
+      res.status(400).json({
+        status: 400,
+        message: "Incorrect Password.",
+      });
+    } else {
+      res.status(200).json({
+        status: 200,
+        body: loginMatch,
+      });
+    }
   } catch (err) {
     console.error(err);
     res.status(400).json({
@@ -259,12 +265,11 @@ const addBookmark = async (req, res) => {
     const db = client.db("montrealskatespots");
     const find = await db
       .collection("users")
-      .updateOne({ user: req.user }, { $set: { bookmarks: req.body } });
+      .updateOne({ email: req.body[1] }, { $set: { bookmarks: req.body[0] } });
     res.status(200).json({
       status: 200,
       message: "success",
       body: req.body,
-      user: req.user,
     });
   } catch (err) {
     res.status(400).json({ message: "failure" });

@@ -9,17 +9,22 @@ const SignInBox = ({ handleEmail, handlePassword, handleSubmit, response, hasErr
     return (
         <StyledBox>
             <InnerBox>
-                <p>Sign In</p>
-                <StyledInput type="text" htmlFor="email" placeholder="email" onChange={handleEmail} />
-                <StyledInput type="password" htmlFor="password" placeholder="password" onChange={handlePassword} />
                 {
-                    !hasError ? <></> : <ErrorBox>{response}</ErrorBox>
+                    isLoggedIn ? <Success>Success!</Success> : (
+                        <>
+                            <p>Sign In</p>
+                            <StyledInput type="text" htmlFor="email" placeholder="email" onChange={handleEmail} />
+                            <StyledInput type="password" htmlFor="password" placeholder="password" onChange={handlePassword} />
+                            {
+                                !hasError ? <></> : <ErrorBox>{response}</ErrorBox>
+                            }
+
+                            <p>Don't have an account? <Link to='/signup' style={{ 'color': '#AF1E2D' }}>Create One</Link></p>
+                            <SignInButton onClick={handleSubmit}>Sign In</SignInButton>
+                        </>
+                    )
                 }
-                {
-                    isLoggedIn ? <Success>Success!</Success> : <></>
-                }
-                <p>Don't have an account? <Link to='/signup' style={{ 'color': '#AF1E2D' }}>Create One</Link></p>
-                <SignInButton onClick={handleSubmit}>Sign In</SignInButton>
+
             </InnerBox>
         </StyledBox>
     )

@@ -22,13 +22,10 @@ const UtilityBar = ({ spotId }) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-
-                    body: JSON.stringify(newBookmarks),
-                    user: currentUser._id,
+                    body: JSON.stringify([newBookmarks, currentUser.email]),
                 })
                 const res = await response.json()
-
-                console.log(res);
+                console.log(res)
             } catch (err) {
                 console.error(`Error: ${err}`);
             }
@@ -61,5 +58,6 @@ const ButtonBox = styled.button`
     justify-content: space-around;
     align-items: center;
 `
+
 
 export default UtilityBar;

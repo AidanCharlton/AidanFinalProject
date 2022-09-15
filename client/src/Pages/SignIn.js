@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import SignInBox from "../Components/SignInBox";
@@ -10,7 +10,7 @@ const SignIn = () => {
     const [password, setPassword] = useState();
     const [response, setResponse] = useState()
     const [hasError, setHasError] = useState()
-    const { setIsLoggedIn, setCurrentUser, isLoggedIn, currentUser, setUserBookmarks } = useContext(UserContext);
+    const { setIsLoggedIn, setCurrentUser, setUserBookmarks } = useContext(UserContext);
 
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
