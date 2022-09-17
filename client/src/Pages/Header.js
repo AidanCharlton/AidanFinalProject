@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn, userBookmarks, currentUser } = useContext(UserContext);
+  const [openMenu, setOpenMenu] = useState();
+  const { isLoggedIn, setIsLoggedIn, userBookmarks, currentUser } =
+    useContext(UserContext);
   let history = useHistory();
 
   const handleSignOut = () => {
@@ -23,18 +25,37 @@ const Header = () => {
           <LinkWrap>
             {isLoggedIn ? (
               <>
-                <Welcome>Welcome, {currentUser.email.split('@')[0]}</Welcome>
-                <SignIn to={"/bookmarks"}>
-                  Bookmarks
-                  <BookmarkNumber>({userBookmarks?.length})</BookmarkNumber>
-                </SignIn>
-                <SignOut onClick={handleSignOut}>Sign Out</SignOut>
+                <ArrowButton onClick={() => setOpenMenu(!openMenu)}>
+                  {openMenu ? ">" : "<"}
+                </ArrowButton>
+                {openMenu ? (
+                  <>
+                    <Welcome>
+                      Welcome, {currentUser.email.split("@")[0]}
+                    </Welcome>
+                    <SignIn to={"/bookmarks"}>
+                      Bookmarks
+                      <BookmarkNumber>({userBookmarks?.length})</BookmarkNumber>
+                    </SignIn>
+                    <SignOut onClick={handleSignOut}>Sign Out</SignOut>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             ) : (
               <>
-                <SignIn to={"/signin"}>Sign In</SignIn>
-                <SignUp to={"/signup"}>Sign Up</SignUp>
-
+                <ArrowButton onClick={() => setOpenMenu(!openMenu)}>
+                  {openMenu ? ">" : "<"}
+                </ArrowButton>
+                {openMenu ? (
+                  <>
+                    <SignIn to={"/signin"}>Sign In</SignIn>
+                    <SignUp to={"/signup"}>Sign Up</SignUp>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             )}
           </LinkWrap>
@@ -44,11 +65,20 @@ const Header = () => {
   );
 };
 
+const ArrowButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  font-size: 30px;
+  transition: 1s;
+`;
+
 const Welcome = styled.h1`
   color: white;
   font-size: 14px;
   margin-right: 20px;
-`
+`;
 
 const Wrapper = styled.div`
   position: sticky;
@@ -93,6 +123,7 @@ const HigherWrap = styled.div`
 const SignIn = styled(Link)`
   color: white;
   text-decoration: none;
+  transition: all 1s;
 `;
 const SignUp = styled(Link)`
   color: white;
