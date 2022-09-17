@@ -7,6 +7,7 @@ export const UserContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [likedSpots, setLikedSpots] = useState([]);
   const [userBookmarks, setUserBookmarks] = useState([]);
+  const [accountCreated, setAccountCreated] = useState();
 
   return (
     <UserContext.Provider
@@ -19,6 +20,8 @@ export const UserContextProvider = ({ children }) => {
         setLikedSpots,
         userBookmarks,
         setUserBookmarks,
+        accountCreated,
+        setAccountCreated,
       }}
     >
       {children}

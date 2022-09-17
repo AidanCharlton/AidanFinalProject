@@ -6,6 +6,7 @@ import FormalName from "../Components/FormalName";
 import UtilityBar from "../Components/UtilityBar";
 import { TbSkateboard } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
+import { BsFillCloudRainHeavyFill } from "react-icons/bs";
 
 const BoroughPage = () => {
   const [boroughSpots, setBoroughSpots] = useState();
@@ -33,10 +34,16 @@ const BoroughPage = () => {
           </TitleWrap>
           <CardWrapper>
             {boroughSpots.length === 0 ? (
-              <span style={{ textAlign: "center" }}>
-                <TbSkateboard /> No spots to display in this area...yet{" "}
-                <TbSkateboard />
-              </span>
+              <NothingToDisplay>
+                <span style={{ textAlign: "center", fontSize: "22px" }}>
+                  <BsFillCloudRainHeavyFill style={{ paddingRight: "20px" }} />
+                  Nothing To Display...Yet
+                  <BsFillCloudRainHeavyFill style={{ paddingLeft: "20px" }} />
+                </span>
+                <Return style={{ textAlign: "center" }} to={"/"}>
+                  Back
+                </Return>
+              </NothingToDisplay>
             ) : (
               boroughSpots?.map((spot, key) => {
                 return (
@@ -74,6 +81,22 @@ const BoroughPage = () => {
     </>
   );
 };
+
+const NothingToDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px 1px lightgray;
+  background-color: white;
+  margin-bottom: 10px;
+  height: 100px;
+`;
+
+const Return = styled(Link)`
+  text-decoration: none;
+  margin-top: 20px;
+`;
 
 const SpinWrap = styled.div`
   width: 100vw;
@@ -117,10 +140,10 @@ const SpotCard = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: auto;
+  height: 60px;
   width: 100%;
-  margin: 25px 0px;
-  padding: 5px;
+  margin: 15px 0px;
+  padding: 0px;
   box-shadow: 0px 0px 5px 1px lightgray;
   transition: 0.5s;
   &:hover {

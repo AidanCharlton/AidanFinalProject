@@ -31,12 +31,12 @@ const Map = ({ bookmarks }) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {
-                mapArray?.map((mark) => {
+                mapArray?.map((mark, id) => {
                     return (
                         <Marker position={mark.coordinates}>
                             <Popup>
                                 <Popuptext>
-                                    <InfoText><b>{mark.name}</b></InfoText>
+                                    <InfoText><b>{id + 1}. {mark.name}</b></InfoText>
                                     <InfoText><i>{mark.borough}</i></InfoText>
                                     <StyledLink to={`/borough/${mark.borough}/${mark.id}`}>Streetview</StyledLink>
                                 </Popuptext>

@@ -5,7 +5,7 @@ import Spinner from "../Components/Spinner";
 import UtilityBar from "../Components/UtilityBar"
 import Map from "./Map";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+
 
 
 const Bookmarks = () => {
@@ -25,7 +25,6 @@ const Bookmarks = () => {
         <Wrapper>
             {bookmarks === undefined ? <Spinner /> : (
                 <>
-                    <h1></h1>
                     <Map bookmarks={bookmarks} />
                     <BookmarkWrapper>
                         {
@@ -33,7 +32,7 @@ const Bookmarks = () => {
                                 return (
                                     <BookmarkArea key={id}>
                                         <Titles >
-                                            <p>{spot.data.name}</p>
+                                            <p>{id + 1}. {spot.data.name}</p>
                                         </Titles>
                                         <UtilityWrapper>
                                             <UtilityBar spotId={spot.data._id} />
@@ -61,6 +60,7 @@ const Wrapper = styled.div`
     align-items: center;
     flex-direction: column;
     min-height: 300px;
+    margin-top: 40px;
 `
 
 const BookmarkWrapper = styled.ol`
@@ -82,12 +82,6 @@ const UtilityWrapper = styled.div`
     
 `
 
-const StreetView = styled(Link)`
-    text-decoration: none;
-    align-self: center;
-    justify-content: right;
-    color: #192168;
-`
 
 
 export default Bookmarks
