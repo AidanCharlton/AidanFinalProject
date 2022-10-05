@@ -17,6 +17,7 @@ const Footer = () => {
           <FooterNav to={"/"}>Home</FooterNav>
           <FooterNav to={"/signin"}>Sign In</FooterNav>
           <FooterNav to={"/signup"}>Sign Up</FooterNav>
+          <FooterNav to={"/submit"}>Submit</FooterNav>
         </>
       )}
     </FooterWrapper>

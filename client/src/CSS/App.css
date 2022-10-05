@@ -13,12 +13,19 @@ h1 {
   width: 800px;
   height: 500px;
   overflow: hidden;
+  z-index: 1;
+}
+
+.borough-map {
+  width: 500px;
+  height: 680px;
 }
 
 /* hamburger icon */
 .icon {
-  font-size: 25px;
+  font-size: 20px;
   transition: 0.2s;
+  padding-left: 0px;
 }
 
 .icon:active {

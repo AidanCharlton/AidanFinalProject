@@ -278,6 +278,25 @@ const addBookmark = async (req, res) => {
   }
 };
 
+const getParks = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+  try {
+    await client.connect();
+    const db = client.db("montrealskatespots");
+    const allSkateSpots = await db.collection("spots").find().toArray();
+    const findParks = allSkateSpots.filter((x) => {
+      if (x.type === "Skatepark") {
+        return x;
+      }
+    });
+    res.status(200).json({ data: findParks });
+  } catch (err) {
+    res.status(400).json({ message: "failure" });
+  } finally {
+    await client.close();
+  }
+};
+
 module.exports = {
   getSpots,
   getSpot,
@@ -289,4 +308,5 @@ module.exports = {
   addLikes,
   addBookmark,
   userSignIn,
+  getParks,
 };

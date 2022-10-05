@@ -50,9 +50,8 @@ const SpinWrap = styled.div`
 const SpotWrapper = styled.div`
   margin-top: 30px;
   height: 100%;
-  width: auto;
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;

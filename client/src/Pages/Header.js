@@ -80,17 +80,7 @@ const Welcome = styled.h1`
   margin-right: 20px;
 `;
 
-const Wrapper = styled.div`
-  position: sticky;
-  width: 100vw;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  padding: 0px 0px;
-  align-items: center;
-  background-color: #192168;
-  opacity: 1;
-`;
+const Wrapper = styled.div``;
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -116,8 +106,15 @@ const LinkWrap = styled.div`
 `;
 
 const HigherWrap = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 70px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  padding: 0px 0px;
+  align-items: center;
+  background-color: #192168;
+  opacity: 1;
 `;
 
 const SignIn = styled(Link)`

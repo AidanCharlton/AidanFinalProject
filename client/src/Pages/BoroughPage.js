@@ -7,6 +7,7 @@ import UtilityBar from "../Components/UtilityBar";
 import { TbSkateboard } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
 import { BsFillCloudRainHeavyFill } from "react-icons/bs";
+import ParkMap from "../Components/ParkMap";
 
 const BoroughPage = () => {
   const [boroughSpots, setBoroughSpots] = useState();
@@ -14,9 +15,19 @@ const BoroughPage = () => {
 
   useEffect(() => {
     const fetchBorough = async () => {
-      const reqSpots = await fetch(`/boroughs/${borough.toLowerCase()}`);
-      const data = await reqSpots.json();
-      setBoroughSpots(data?.data);
+      if (borough === "parks") {
+        const reqSpots = await fetch("/parks");
+        const data = await reqSpots.json();
+        setBoroughSpots(data?.data);
+      } else if (borough === "all-spots") {
+        const reqSpots = await fetch("/spots");
+        const data = await reqSpots.json();
+        setBoroughSpots(data?.data);
+      } else {
+        const reqSpots = await fetch(`/boroughs/${borough.toLowerCase()}`);
+        const data = await reqSpots.json();
+        setBoroughSpots(data?.data);
+      }
     };
     fetchBorough();
   }, [setBoroughSpots, borough]);
@@ -29,53 +40,67 @@ const BoroughPage = () => {
         </SpinWrap>
       ) : (
         <Wrapper>
-          <TitleWrap>
-            <FormalName borough={borough} />
-          </TitleWrap>
-          <CardWrapper>
-            {boroughSpots.length === 0 ? (
-              <NothingToDisplay>
-                <span style={{ textAlign: "center", fontSize: "22px" }}>
-                  <BsFillCloudRainHeavyFill style={{ paddingRight: "20px" }} />
-                  Nothing To Display...Yet
-                  <BsFillCloudRainHeavyFill style={{ paddingLeft: "20px" }} />
-                </span>
+          {boroughSpots.length === 0 ? (
+            <NothingToDisplay>
+              <span style={{ textAlign: "center", fontSize: "22px" }}>
+                <BsFillCloudRainHeavyFill style={{ paddingRight: "20px" }} />
+                <FormalName borough={borough} /> has no spots to display
+              </span>
+              <div>
                 <Return style={{ textAlign: "center" }} to={"/"}>
-                  Back
+                  Home
                 </Return>
-              </NothingToDisplay>
-            ) : (
-              boroughSpots?.map((spot, key) => {
-                return (
-                  <SpotCard key={key}>
-                    <StyledLink to={`/borough/${spot.borough}/${spot._id}`}>
-                      <InfoSide>
-                        {spot.type === "Street" ? (
-                          <IconWrap>
-                            <FaCity className="icon" />
-                          </IconWrap>
-                        ) : (
-                          <IconWrap>
-                            <TbSkateboard className="icon" />
-                          </IconWrap>
-                        )}
-                        {spot.type === "Skatepark" ? (
-                          <SpotType>Park</SpotType>
-                        ) : (
-                          <SpotType>{spot.type}</SpotType>
-                        )}
-                      </InfoSide>
-                      <NameWrapper>
-                        <SpotName>{spot.name}</SpotName>
-                      </NameWrapper>
-                    </StyledLink>
-
-                    <UtilityBar spotId={spot._id} />
-                  </SpotCard>
-                );
-              })
-            )}
-          </CardWrapper>
+                <Return style={{ textAlign: "center" }} to={"/submit"}>
+                  Submit a spot
+                </Return>
+              </div>
+            </NothingToDisplay>
+          ) : (
+            <>
+              <div style={{ 'padding': '10px' }}>
+                <FormalName borough={borough} />
+              </div>
+              <InnerWrapper>
+                <MapWrap>
+                  <ParkMap parks={boroughSpots} />
+                </MapWrap>
+                <CardWrapper>
+                  <div style={{ overflow: "scroll" }}>
+                    {boroughSpots?.map((spot, key) => {
+                      return (
+                        <SpotCard key={key}>
+                          <StyledLink
+                            to={`/borough/${spot.borough}/${spot._id}`}
+                          >
+                            <InfoSide>
+                              {spot.type === "Street" ? (
+                                <IconWrap>
+                                  <FaCity className="icon" />
+                                </IconWrap>
+                              ) : (
+                                <IconWrap>
+                                  <TbSkateboard className="icon" />
+                                </IconWrap>
+                              )}
+                              {spot.type === "Skatepark" ? (
+                                <SpotType>Park</SpotType>
+                              ) : (
+                                <SpotType>{spot.type}</SpotType>
+                              )}
+                            </InfoSide>
+                            <NameWrapper>
+                              <SpotName>{spot.name}</SpotName>
+                            </NameWrapper>
+                          </StyledLink>
+                          <UtilityBar spotId={spot._id} />
+                        </SpotCard>
+                      );
+                    })}
+                  </div>
+                </CardWrapper>
+              </InnerWrapper>
+            </>
+          )}
         </Wrapper>
       )}
     </>
@@ -89,13 +114,16 @@ const NothingToDisplay = styled.div`
   justify-content: center;
   box-shadow: 0px 0px 10px 1px lightgray;
   background-color: white;
-  margin-bottom: 10px;
-  height: 100px;
+  margin: 30px;
+  padding: 20px;
+  height: 200px;
+  width: 500px;
 `;
 
 const Return = styled(Link)`
   text-decoration: none;
-  margin-top: 20px;
+  padding: 20px;
+  display: inline-block;
 `;
 
 const SpinWrap = styled.div`
@@ -118,18 +146,38 @@ const Wrapper = styled.div`
   margin-bottom: 100px;
 `;
 
-const TitleWrap = styled.div`
+const InnerWrapper = styled.div`
+  width: 1200px;
+  height: 800px;
+  margin: 20px 0px 20px 0px;
+  box-shadow: 0px 0px 10px 2px lightgray;
   display: flex;
-  width: 750px;
+  align-items: center;
   justify-content: center;
+  flex-direction: row;
+`;
+
+const MapWrap = styled.div`
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30px;
+  border-right: solid 2px lightgray;
 `;
 
 const CardWrapper = styled.div`
-  width: 750px;
+  width: auto;
+  height: 705px;
+  width: auto;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  overflow: scroll;
+  padding-left: 20px;
 `;
 
 const SpotCard = styled.div`
@@ -141,13 +189,13 @@ const SpotCard = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  width: 100%;
-  margin: 15px 0px;
+  width: 500px;
+  margin: 10px;
   padding: 0px;
   box-shadow: 0px 0px 5px 1px lightgray;
   transition: 0.5s;
   &:hover {
-    box-shadow: 0px 0px 5px 1px #192168;
+    box-shadow: 0px 0px 5px 1px gray;
   }
 `;
 
@@ -162,8 +210,8 @@ const StyledLink = styled(Link)`
 `;
 
 const SpotName = styled.div`
-  font-size: 20px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 0px;
 `;
 
 const NameWrapper = styled.div`
@@ -178,7 +226,7 @@ const InfoSide = styled.div`
   flex-direction: column;
   width: 100px;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 0px;
 `;
 
 const SpotType = styled.div`
@@ -188,7 +236,8 @@ const SpotType = styled.div`
 
 const IconWrap = styled.div`
   display: flex;
-  justify-content: right;
+  padding: 0px;
+  margin: 0px;
 `;
 
 export default BoroughPage;

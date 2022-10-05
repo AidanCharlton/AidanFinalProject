@@ -35,6 +35,17 @@ button {
   border: solid 2px #192168;
   color: #192168;
 }
+.alt-box-styling {
+  background-color: whitesmoke;
+  border: none;
+  transform: rotateY(0deg) rotate(0deg);
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #192168;
+  margin: 0px;
+}
 
 .box-styling:hover {
   z-index: 5;
@@ -56,6 +67,18 @@ button {
   transition: all 0.5s;
 }
 
+.alt-textrotate {
+  z-index: 1;
+  width: auto;
+  text-align: center;
+  word-wrap: break-word;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 500;
+  font-size: 18px;
+  transform: rotateY(0deg) rotate(0deg);
+  transition: all 0.5s;
+}
+
 .box-styling:hover > .textrotate {
   transform: rotateY(0deg) rotate(0deg);
 }
@@ -64,19 +87,64 @@ button {
   scale: 1.7;
 }
 
+.outliers {
+  transition: all 0.3s ease-in;
+  transform: rotateY(0deg) rotate(0deg);
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 20px;
+  text-align: center;
+  top: 100px;
+  left: 30px;
+  z-index: 100;
+}
+
 /* boroughs */
 
+#all-spots {
+  grid-column: 1;
+  grid-row: 1;
+  height: auto;
+  width: auto;
+  padding: 20px;
+}
+
+#parks {
+  box-shadow: 0px 0px 0px 0px #192168;
+  grid-column: 2;
+  grid-row: 1;
+  height: auto;
+  width: auto;
+  padding: 20px;
+}
+
 #south-shore {
-  box-shadow: -5px 5px 0px 1px #192168;
-  grid-column: 1/3;
-  grid-row: 6;
-  height: 60px;
+  box-shadow: 0px 0px 0px 0px #192168;
+  grid-column: 3;
+  grid-row: 1;
+  height: auto;
+  width: auto;
+  padding: 20px;
+}
+
+#laval {
+  box-shadow: 0px 0px 0px 0px #192168;
+  grid-column: 4;
+  grid-row: 1;
+  height: auto;
+  width: auto;
+  padding: 20px;
 }
 
 #west-island {
   grid-column: 1 / 4;
   grid-row: 1 / 3;
   box-shadow: -5px 5px 0px 1px #192168;
+  width: auto;
+  margin-left: -50px;
+  margin-top: 70px;
 }
 
 #saint-laurent {
@@ -90,7 +158,7 @@ button {
   grid-row: 2;
   box-shadow: -5px 5px 0px 1px #192168;
   height: 60px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 #mtl-north {
@@ -103,7 +171,9 @@ button {
   grid-column: 10/12;
   grid-row: 1 /3;
   box-shadow: -5px 5px 0px 1px #192168;
-  width: 130px;
+  width: 200px;
+  height: 120px;
+  margin-top: 57px;
 }
 
 #dorval {
@@ -136,15 +206,9 @@ button {
   box-shadow: -5px 5px 0px 1px #192168;
 }
 
-#little-italy {
-  grid-column: 8 / 9;
-  grid-row: 3;
-  box-shadow: -5px 5px 0px 1px #192168;
-}
-
 #rosemont {
-  grid-column: 9 / 10;
-  grid-row: 3 / 5;
+  grid-column: 8 / 10;
+  grid-row: 3;
   box-shadow: -5px 5px 0px 1px #192168;
 }
 
@@ -185,7 +249,7 @@ button {
 }
 
 #plateau {
-  grid-column: 8 / 9;
+  grid-column: 8 / 10;
   grid-row: 4;
   box-shadow: -5px 5px 0px 1px #192168;
 }
@@ -212,4 +276,214 @@ button {
   grid-column: 7 / 8;
   grid-row: 6;
   box-shadow: -5px 5px 0px 1px #192168;
+}
+
+@media only screen and (max-width: 1100px) {
+  .container {
+    align-items: baseline;
+  }
+  .gridbox {
+    transform: rotateY(0deg) rotate(0deg);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 120px;
+    grid-gap: 40px;
+  }
+  .textrotate {
+    transform: rotate(0deg);
+  }
+  .outliers {
+    top: 100px;
+    height: 50px;
+    width: 95%;
+    grid-gap: 40px;
+    transform: rotateY(0deg) rotate(0deg);
+  }
+
+  .alt-box-styling {
+    height: 100px;
+  }
+
+  #all-spots {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #parks {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #south-shore {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  #laval {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  /* boroughs */
+
+  #west-island {
+    grid-column: 2;
+    grid-row: 1;
+    box-shadow: -5px 5px 0px 1px #192168;
+    margin: 0px;
+  }
+
+  #saint-laurent {
+    grid-column: 3;
+    grid-row: 1;
+    box-shadow: -5px 5px 0px 1px #192168;
+    margin: 0px;
+  }
+
+  #ahuntsic {
+    margin-top: 0px;
+    grid-column: 1;
+    grid-row: 2;
+    box-shadow: -5px 5px 0px 1px #192168;
+    height: auto;
+    margin: 0px;
+  }
+
+  #mtl-north {
+    margin: 0px;
+    height: auto;
+    grid-column: 2;
+    grid-row: 2;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #rdp {
+    margin: 0px;
+    grid-column: 3;
+    grid-row: 2;
+    box-shadow: -5px 5px 0px 1px #192168;
+    height: auto;
+    width: auto;
+  }
+
+  #dorval {
+    grid-column: 1;
+    grid-row: 3;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #hampstead {
+    grid-column: 2;
+    grid-row: 3;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #tmr {
+    grid-column: 3;
+    grid-row: 3;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #cdn {
+    grid-column: 4;
+    grid-row: 1;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #park-extension {
+    grid-column: 1;
+    grid-row: 1;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #little-italy {
+    grid-column: 3;
+    grid-row: 8;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #rosemont {
+    grid-column: 1;
+    grid-row: 4;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #mtl-east {
+    grid-column: 2;
+    grid-row: 4;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #lachine {
+    grid-column: 3;
+    grid-row: 4;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #mtl-west {
+    grid-column: 1;
+    grid-row: 5;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #ndg {
+    grid-column: 2;
+    grid-row: 5;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #westmount {
+    grid-column: 3;
+    grid-row: 5;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #downtown {
+    grid-column: 4;
+    grid-row: 5;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #plateau {
+    grid-column: 2;
+    grid-row: 6;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #south-west {
+    grid-column: 3;
+    grid-row: 6;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #village {
+    grid-column: 4;
+    grid-row: 4;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #hochelaga {
+    grid-column: 4;
+    grid-row: 3;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  #old-port {
+    grid-column: 4;
+    grid-row: 2;
+    box-shadow: -5px 5px 0px 1px #192168;
+  }
+
+  .box-styling:hover {
+    transform: rotateY(0deg) rotate(0deg);
+  }
+
+  .box-styling:active {
+    scale: 1.7;
+  }
+
+  .alt-box-styling:hover {
+    scale: 1.3;
+    box-shadow: 0px 0px 0px 0px !important;
+  }
 }

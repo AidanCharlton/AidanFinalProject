@@ -18,7 +18,7 @@ const FormalName = ({ borough }) => {
       case "mtl-north":
         setFormalName("Montreal North");
         break;
-      case "rdb":
+      case "rdp":
         setFormalName("Riviere-des-Prairies—Pointe-aux-Trembles");
         break;
       case "dorval":
@@ -75,6 +75,9 @@ const FormalName = ({ borough }) => {
       case "old-port":
         setFormalName("Old Montreal");
         break;
+      case "parks":
+        setFormalName("Skate Parks");
+        break;
       default:
     }
   }, [setFormalName, borough]);
@@ -82,8 +85,8 @@ const FormalName = ({ borough }) => {
 };
 
 const FormalTitle = styled.h1`
-  margin-top: 30px;
-  padding-left: 20px;
+  margin: 20px 0px 0px;
+  padding: 0px;
   font-weight: 500;
   font-size: 25px;
   color: #192168;

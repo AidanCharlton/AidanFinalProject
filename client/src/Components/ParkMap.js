@@ -1,30 +1,30 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 
-const Map = ({ bookmarks }) => {
+
+const ParkMap = ({ parks }) => {
     const [mapArray, setMapArray] = useState();
 
-
     useEffect(() => {
-        const coordinateArray = bookmarks?.map((mark, id) => {
+        const coordinateArray = parks?.map((park) => {
             return {
-                key: id,
-                name: mark.data.name,
-                borough: mark.data.borough,
-                id: mark.data._id,
+                name: park.name,
+                borough: park.borough,
+                id: park._id,
                 coordinates: [
-                    mark.data.link.split('/maps/@')[1].split('/data')[0].split(',')[0],
-                    mark.data.link.split('/maps/@')[1].split('/data')[0].split(',')[1]
+                    park.link.split('/maps/@')[1].split('/data')[0].split(',')[0],
+                    park.link.split('/maps/@')[1].split('/data')[0].split(',')[1]
                 ],
-                streetview: mark.data.link,
+                streetview: park.link,
             }
         })
         setMapArray(coordinateArray)
-    }, [bookmarks])
-    return !mapArray ? <></> : (
-        <MapContainer center={[45.5019, -73.5674]} zoom={12} scrollWheelZoom={true} className="Map" style={{ 'boxShadow': '0px 0px 10px 1px lightgray', 'border': 'solid 1px lightgray' }}>
+    })
+
+    return (
+        <MapContainer center={[45.5300, -73.5974]} zoom={12} scrollWheelZoom={true} className="borough-map" style={{ 'boxShadow': '0px 0px 10px 1px lightgray', 'border': 'solid 1px lightgray' }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -44,7 +44,6 @@ const Map = ({ bookmarks }) => {
                     )
                 })
             }
-
         </MapContainer>
     )
 }
@@ -66,4 +65,4 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `
 
-export default Map
+export default ParkMap

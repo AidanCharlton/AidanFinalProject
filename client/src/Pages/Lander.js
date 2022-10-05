@@ -9,8 +9,19 @@ const Lander = () => {
         history.push(`/borough/${window.event.target.innerText}`)
     }
 
+
     return (
         <div className="container">
+
+            <div className="outliers">
+                <button id="parks" className="alt-box-styling" onClick={() => handleClick()}>
+                    <span className="alt-textrotate">parks</span>
+                </button>
+                <button id="all-spots" className="alt-box-styling" onClick={() => handleClick()}>
+                    <span className="alt-textrotate">all-spots</span>
+                </button>
+            </div>
+
             <div className="gridbox">
                 <div id="west-island" className="box-styling" onClick={() => handleClick()}>
                     <label className="textrotate">west-island</label>
@@ -41,9 +52,6 @@ const Lander = () => {
                 </button>
                 <button id="park-extension" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">park-extension</span>
-                </button>
-                <button id="little-italy" className="box-styling" onClick={() => handleClick()}>
-                    <span className="textrotate">little-italy</span>
                 </button>
                 <button id="rosemont" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">rosemont</span>
@@ -81,9 +89,7 @@ const Lander = () => {
                 <button id="old-port" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">old-port</span>
                 </button>
-                <button id="south-shore" className="box-styling" onClick={() => handleClick()}>
-                    <span className="textrotate">south-shore</span>
-                </button>
+
             </div>
         </div>
     )
