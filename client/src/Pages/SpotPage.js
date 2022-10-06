@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Spinner from "../Components/Spinner";
 import Streetview from "../Components/Streetview";
 import UtilityBar from "../Components/UtilityBar";
@@ -31,12 +31,17 @@ const SpotPage = () => {
             <StyledText>{singleSpot.name}</StyledText>
             <Streetview singleSpot={singleSpot} />
             <UtilityBar spotId={id} />
+            <GoBack to={`/borough/${singleSpot.borough}`}> Go Back</GoBack>
           </SpotCard>
         </SpotWrapper>
       )}
     </SpotWrapper>
   );
 };
+
+const GoBack = styled(Link)`
+  text-decoration: none;
+`;
 
 const SpinWrap = styled.div`
   width: 100vw;
@@ -61,7 +66,11 @@ const SpotCard = styled.div`
   padding: 20px;
   text-align: center;
   width: 800px;
+  height: 600px;
   box-shadow: 0px 0px 10px 1px lightgray;
+  @media only screen and (max-width: 1000px) {
+    width: 600px;
+  }
 `;
 
 const StyledText = styled.h1`
@@ -69,6 +78,3 @@ const StyledText = styled.h1`
 `;
 
 export default SpotPage;
-
-//database link: https://www.google.com/maps/@45.4830423,-73.5987933,3a,75y,100.29h,100.5t/data=!3m6!1e1!3m4!1sZgxbL89iJ96dqrqciLmaXg!2e0!7i16384!8i8192
-//embeded link:   https://www.google.com/maps/embed?pb=!4v1661837324134!6m8!1m7!1sZgxbL89iJ96dqrqciLmaXg!2m2!1d 45.48304231825912!2d-73.5987932907826 !3f100.29!4f10.5!5f0.7820865974627469" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

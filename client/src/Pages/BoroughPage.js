@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../CSS/BoroughPage.css";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../Components/Spinner";
@@ -42,29 +43,32 @@ const BoroughPage = () => {
         <Wrapper>
           {boroughSpots.length === 0 ? (
             <NothingToDisplay>
-              <span style={{ textAlign: "center", fontSize: "22px" }}>
-                <BsFillCloudRainHeavyFill style={{ paddingRight: "20px" }} />
-                <FormalName borough={borough} /> has no spots to display
+              <span
+                style={{
+                  textAlign: "center",
+                  fontSize: "24px",
+                  color: "#192168",
+                  paddingBottom: "10px",
+                }}
+              >
+                <BsFillCloudRainHeavyFill />
+                <FormalName borough={borough} />
+                <span>has no spots to display</span>
               </span>
-              <div>
-                <Return style={{ textAlign: "center" }} to={"/"}>
-                  Home
-                </Return>
-                <Return style={{ textAlign: "center" }} to={"/submit"}>
-                  Submit a spot
-                </Return>
-              </div>
             </NothingToDisplay>
           ) : (
             <>
-              <div style={{ 'padding': '10px' }}>
+              <TitleWrapper>
                 <FormalName borough={borough} />
-              </div>
+              </TitleWrapper>
               <InnerWrapper>
-                <MapWrap>
+                <MapWrap className="map-wrap">
+                  <AltTitle>
+                    <FormalName borough={borough} />
+                  </AltTitle>
                   <ParkMap parks={boroughSpots} />
                 </MapWrap>
-                <CardWrapper>
+                <CardWrapper className="card-wrapper">
                   <div style={{ overflow: "scroll" }}>
                     {boroughSpots?.map((spot, key) => {
                       return (
@@ -101,11 +105,53 @@ const BoroughPage = () => {
               </InnerWrapper>
             </>
           )}
+          <LinkWrapper>
+            <SubmitLink to={"/submit"}>Submit a Spot</SubmitLink>
+            <BackHome to={"/"}>Back to Home</BackHome>
+          </LinkWrapper>
         </Wrapper>
       )}
     </>
   );
 };
+
+const AltTitle = styled.div`
+  display: none;
+  @media only screen and (max-width: 1100px) {
+    display: block;
+    padding: 20px;
+  }
+`;
+
+// Title
+const TitleWrapper = styled.div`
+  padding: 10px;
+  @media only screen and (max-width: 1100px) {
+    display: none;
+    margin-top: 20px;
+  }
+`;
+
+// Bottom Links
+const LinkWrapper = styled.div`
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+  @media only screen and (max-width: 1100px) {
+    margin-top: 40px;
+  }
+`;
+
+const BackHome = styled(Link)`
+  text-decoration: none;
+  color: #192168;
+`;
+const SubmitLink = styled(Link)`
+  text-decoration: none;
+  color: #192168;
+`;
+
+// Nothing to Display
 
 const NothingToDisplay = styled.div`
   display: flex;
@@ -116,14 +162,8 @@ const NothingToDisplay = styled.div`
   background-color: white;
   margin: 30px;
   padding: 20px;
-  height: 200px;
-  width: 500px;
-`;
-
-const Return = styled(Link)`
-  text-decoration: none;
-  padding: 20px;
-  display: inline-block;
+  height: 120px;
+  width: 400px;
 `;
 
 const SpinWrap = styled.div`
@@ -147,14 +187,18 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  width: 1200px;
-  height: 800px;
+  width: 1120px;
+  height: 740px;
   margin: 20px 0px 20px 0px;
   box-shadow: 0px 0px 10px 2px lightgray;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  @media only screen and (max-width: 1100px) {
+    box-shadow: 0px 0px 0px 0px lightgray;
+    margin: 0px 0px 20px 0px;
+  }
 `;
 
 const MapWrap = styled.div`
@@ -165,6 +209,10 @@ const MapWrap = styled.div`
   justify-content: center;
   padding-right: 30px;
   border-right: solid 2px lightgray;
+  @media only screen and (max-width: 1100px) {
+    border: none;
+    padding-right: 0px;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -178,6 +226,10 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
   overflow: scroll;
   padding-left: 20px;
+  margin-right: -10px;
+  @media only screen and (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const SpotCard = styled.div`

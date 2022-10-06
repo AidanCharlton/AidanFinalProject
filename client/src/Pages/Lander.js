@@ -9,23 +9,21 @@ const Lander = () => {
         history.push(`/borough/${window.event.target.innerText}`)
     }
 
-
     return (
         <div className="container">
 
-            <div className="outliers">
-                <button id="parks" className="alt-box-styling" onClick={() => handleClick()}>
-                    <span className="alt-textrotate">parks</span>
-                </button>
-                <button id="all-spots" className="alt-box-styling" onClick={() => handleClick()}>
-                    <span className="alt-textrotate">all-spots</span>
-                </button>
-            </div>
+
 
             <div className="gridbox">
-                <div id="west-island" className="box-styling" onClick={() => handleClick()}>
+                <button id="parks" className="box-styling" onClick={() => handleClick()}>
+                    <span className="textrotate">parks</span>
+                </button>
+                <button id="all-spots" className="box-styling" onClick={() => handleClick()}>
+                    <span className="textrotate">all-spots</span>
+                </button>
+                <button id="west-island" className="box-styling" onClick={() => handleClick()}>
                     <label className="textrotate">west-island</label>
-                </div>
+                </button>
                 <button id="saint-laurent" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">saint-laurent</span>
                 </button>
@@ -89,7 +87,6 @@ const Lander = () => {
                 <button id="old-port" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">old-port</span>
                 </button>
-
             </div>
         </div>
     )
