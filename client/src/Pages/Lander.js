@@ -11,9 +11,6 @@ const Lander = () => {
 
     return (
         <div className="container">
-
-
-
             <div className="gridbox">
                 <button id="parks" className="box-styling" onClick={() => handleClick()}>
                     <span className="textrotate">parks</span>

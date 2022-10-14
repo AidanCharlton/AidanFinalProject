@@ -19,6 +19,7 @@ const {
   getUser,
   userSignIn,
   getParks,
+  updateTags,
 } = require("./data/handler");
 
 app.get("/spots", getSpots);
@@ -32,6 +33,7 @@ app.post("/adduser", createUser);
 app.post("/signin", userSignIn);
 app.post("/likes", addLikes);
 app.post("/bookmarks", addBookmark);
+app.post("/addtags", updateTags);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

@@ -91,6 +91,9 @@ const InnerWrapper = styled.div`
 
 const HeaderTitle = styled.h1`
   color: white;
+  @media only screen and (max-width: 650px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledHeader = styled(Link)`

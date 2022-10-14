@@ -60,7 +60,7 @@ const FormalName = ({ borough }) => {
       case "downtown":
         setFormalName("Downtown");
         break;
-      case "plateau":
+      case "Plateau":
         setFormalName("Le Plateau-Mont-Royal");
         break;
       case "south-west":
@@ -85,12 +85,13 @@ const FormalName = ({ borough }) => {
 };
 
 const FormalTitle = styled.h1`
-  margin: 20px 0px 0px;
-  padding: 0px;
+  padding: 10px;
   font-weight: 500;
   font-size: 25px;
   color: #192168;
   font-weight: 500;
+  @media screen {
+  }
 `;
 
 export default FormalName;

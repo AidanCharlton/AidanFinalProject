@@ -19,8 +19,8 @@ const StreetMap = ({ singleSpot }) => {
             <p style={{ 'color': 'grey' }}>{coordinates.lng}, {coordinates.lat}</p>
             <iframe
                 src={singleSpot.iframe}
-                width="600"
-                height="400"
+                width="90%"
+                height="80%"
                 title="street-view"
             ></iframe>
         </FrameWrapper>
@@ -34,9 +34,8 @@ const FrameWrapper = styled.div`
     align-items: center;
     background-color: white;
     width: 100%;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding-bottom: 20px;
+    height: 90%;
+
 `
 
 export default StreetMap

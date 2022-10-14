@@ -94,6 +94,14 @@ const BoroughPage = () => {
                             </InfoSide>
                             <NameWrapper>
                               <SpotName>{spot.name}</SpotName>
+                              <Tags>
+                                <span style={{ color: "black" }}>
+                                  {spot.borough} -
+                                </span>
+                                {spot.tags.sort().map((x, id) => {
+                                  return <span key={id}> {x}</span>;
+                                })}
+                              </Tags>
                             </NameWrapper>
                           </StyledLink>
                           <UtilityBar spotId={spot._id} />
@@ -115,21 +123,24 @@ const BoroughPage = () => {
   );
 };
 
+const Tags = styled.p`
+  font-size: 10px;
+  padding-top: 10px;
+  margin: 0px;
+  color: #af1e2d;
+`;
+
 const AltTitle = styled.div`
   display: none;
-  @media only screen and (max-width: 1100px) {
-    display: block;
-    padding: 20px;
-  }
 `;
 
 // Title
 const TitleWrapper = styled.div`
-  padding: 10px;
-  @media only screen and (max-width: 1100px) {
-    display: none;
-    margin-top: 20px;
-  }
+  border-bottom: solid 2px lightgray;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 // Bottom Links
@@ -137,17 +148,20 @@ const LinkWrapper = styled.div`
   display: flex;
   width: 400px;
   justify-content: space-around;
-  @media only screen and (max-width: 1100px) {
-    margin-top: 40px;
+  border-top: solid 2px lightgray;
+  @media only screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
 const BackHome = styled(Link)`
   text-decoration: none;
   color: #192168;
+  margin-top: 20px;
 `;
 const SubmitLink = styled(Link)`
   text-decoration: none;
+  margin-top: 20px;
   color: #192168;
 `;
 
@@ -161,7 +175,7 @@ const NothingToDisplay = styled.div`
   box-shadow: 0px 0px 10px 1px lightgray;
   background-color: white;
   margin: 30px;
-  padding: 20px;
+  padding: 40px;
   height: 120px;
   width: 400px;
 `;
@@ -178,7 +192,7 @@ const SpinWrap = styled.div`
 const Wrapper = styled.div`
   overflow: hidden;
   width: 100vw;
-  height: auto;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -188,16 +202,16 @@ const Wrapper = styled.div`
 
 const InnerWrapper = styled.div`
   width: 1120px;
-  height: 740px;
+  height: 700px;
   margin: 20px 0px 20px 0px;
-  box-shadow: 0px 0px 10px 2px lightgray;
+  /* box-shadow: 0px 0px 10px 2px lightgray; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  @media only screen and (max-width: 1100px) {
-    box-shadow: 0px 0px 0px 0px lightgray;
-    margin: 0px 0px 20px 0px;
+  @media only screen and (max-width: 1500px), screen and (max-height: 600px) {
+    height: 600px;
+    width: 80%;
   }
 `;
 
@@ -209,15 +223,15 @@ const MapWrap = styled.div`
   justify-content: center;
   padding-right: 30px;
   border-right: solid 2px lightgray;
-  @media only screen and (max-width: 1100px) {
+  max-height: 90%;
+  @media only screen and (max-width: 1500px) {
     border: none;
     padding-right: 0px;
   }
 `;
 
 const CardWrapper = styled.div`
-  width: auto;
-  height: 705px;
+  height: 635px;
   width: auto;
   display: flex;
   flex-direction: column;
@@ -227,8 +241,10 @@ const CardWrapper = styled.div`
   overflow: scroll;
   padding-left: 20px;
   margin-right: -10px;
-  @media only screen and (max-width: 1100px) {
+  overflow: hidden;
+  @media only screen and (max-width: 1500px), screen and (max-height: 600px) {
     display: none;
+    height: 427px;
   }
 `;
 
@@ -247,7 +263,7 @@ const SpotCard = styled.div`
   box-shadow: 0px 0px 5px 1px lightgray;
   transition: 0.5s;
   &:hover {
-    box-shadow: 0px 0px 5px 1px gray;
+    box-shadow: 0px 0px 1px 1px gray;
   }
 `;
 
@@ -262,27 +278,33 @@ const StyledLink = styled(Link)`
 `;
 
 const SpotName = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   padding: 0px;
+  margin: 0px;
 `;
 
 const NameWrapper = styled.div`
   display: flex;
-  align-items: center;
   width: auto;
-  height: 70px;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
 `;
 
 const InfoSide = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100px;
+  width: 45px;
   align-items: center;
-  padding-left: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 2px;
+  background-color: whitesmoke;
+  border-radius: 10px;
 `;
 
 const SpotType = styled.div`
-  font-size: 15px;
+  font-size: 10px;
   color: #af1e2d;
 `;
 

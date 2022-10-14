@@ -17,7 +17,7 @@ const getSpots = async (req, res) => {
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
-    const allSkateSpots = await db.collection("spots").find().toArray();
+    const allSkateSpots = await db.collection("updatedspots").find().toArray();
     if (allSkateSpots.length === 0) {
       res.status(400).json({
         status: 400,
@@ -43,7 +43,7 @@ const getSpot = async (req, res) => {
     const objectId = new ObjectId(id);
     await client.connect();
     const db = client.db("montrealskatespots");
-    const spot = await db.collection("spots").findOne(objectId);
+    const spot = await db.collection("updatedspots").findOne(objectId);
 
     res.status(200).json({
       status: 200,
@@ -62,7 +62,7 @@ const getBorough = async (req, res) => {
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
-    const spots = await db.collection("spots").find().toArray();
+    const spots = await db.collection("updatedspots").find().toArray();
     const boroughSpots = spots.filter((spot) => {
       if (spot.borough.toLowerCase() === borough) return spot;
     });
@@ -82,7 +82,7 @@ const getBoroughs = async (req, res) => {
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
-    const spots = await db.collection("spots").find().toArray();
+    const spots = await db.collection("updatedspots").find().toArray();
     const mapBoroughs = spots.map((spot) => {
       return spot.borough;
     });
@@ -283,13 +283,30 @@ const getParks = async (req, res) => {
   try {
     await client.connect();
     const db = client.db("montrealskatespots");
-    const allSkateSpots = await db.collection("spots").find().toArray();
+    const allSkateSpots = await db.collection("updatedspots").find().toArray();
     const findParks = allSkateSpots.filter((x) => {
       if (x.type === "Skatepark") {
         return x;
       }
     });
     res.status(200).json({ data: findParks });
+  } catch (err) {
+    res.status(400).json({ message: "failure" });
+  } finally {
+    await client.close();
+  }
+};
+
+const updateTags = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
+  const objectId = new ObjectId(req.body[1]);
+  const tagArray = req.body[0];
+  try {
+    await client.connect();
+    const db = client.db("montrealskatespots");
+    await db
+      .collection("updatedspots")
+      .updateOne({ _id: objectId }, { $set: { tags: tagArray } });
   } catch (err) {
     res.status(400).json({ message: "failure" });
   } finally {
@@ -309,4 +326,5 @@ module.exports = {
   addBookmark,
   userSignIn,
   getParks,
+  updateTags,
 };

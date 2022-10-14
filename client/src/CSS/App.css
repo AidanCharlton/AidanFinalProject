@@ -16,9 +16,12 @@ h1 {
   z-index: 1;
 }
 
+.mnap-wrap {
+  max-height: 80%;
+}
 /* hamburger icon */
 .icon {
-  font-size: 20px;
+  font-size: 15px;
   transition: 0.2s;
   padding-left: 0px;
 }

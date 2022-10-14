@@ -7,6 +7,24 @@ export const SkateSpotProvider = ({ children }) => {
   const [currentSpot, setCurrentSpot] = useState();
   const [allSpots, setAllSpots] = useState([]);
   const [selectedBorough, setSelectedBorough] = useState();
+  const features = [
+    "quarter-pipe",
+    "half-pipe",
+    "bowl",
+    "bank",
+    "hubba",
+    "flat-bar",
+    "handrail",
+    "kinked-rail",
+    "stair-set",
+    "bump-to-bar",
+    "curb",
+    "skatepark",
+    "plaza",
+    "ledge",
+    "manual",
+    "crust",
+  ];
 
   return (
     <SkateSpotContext.Provider
@@ -19,6 +37,7 @@ export const SkateSpotProvider = ({ children }) => {
         setAllSpots,
         selectedBorough,
         setSelectedBorough,
+        features,
       }}
     >
       {children}

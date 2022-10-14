@@ -21,10 +21,10 @@ const ParkMap = ({ parks }) => {
             }
         })
         setMapArray(coordinateArray)
-    })
+    }, [setMapArray, parks])
 
     return (
-        <MapContainer center={[45.5300, -73.5974]} zoom={12} scrollWheelZoom={true} className="borough-map" style={{ 'boxShadow': '0px 0px 10px 1px lightgray', 'border': 'solid 1px lightgray' }}>
+        <MapContainer center={[45.5300, -73.5974]} zoom={11} scrollWheelZoom={true} className="borough-map" style={{ 'boxShadow': '0px 0px 10px 1px lightgray', 'border': 'solid 1px lightgray' }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

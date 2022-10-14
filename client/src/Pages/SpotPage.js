@@ -41,6 +41,10 @@ const SpotPage = () => {
 
 const GoBack = styled(Link)`
   text-decoration: none;
+  color: gray;
+  border-top: 2px solid lightgray;
+  width: 70%;
+  padding: 20px;
 `;
 
 const SpinWrap = styled.div`
@@ -53,20 +57,24 @@ const SpinWrap = styled.div`
 `;
 
 const SpotWrapper = styled.div`
-  margin-top: 30px;
-  height: 100%;
-  width: 100%;
+  height: 90vh;
+  width: 100vw;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 `;
 
 const SpotCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: white;
   padding: 20px;
   text-align: center;
-  width: 800px;
-  height: 600px;
+  width: 70%;
+  height: 70%;
   box-shadow: 0px 0px 10px 1px lightgray;
   @media only screen and (max-width: 1000px) {
     width: 600px;

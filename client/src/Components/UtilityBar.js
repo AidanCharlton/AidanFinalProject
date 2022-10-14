@@ -35,7 +35,7 @@ const UtilityBar = ({ spotId }) => {
 
     return (
         <ButtonWrapper>
-            <ButtonBox disabled={!isLoggedIn} onClick={() => handleBookmarked()}>
+            <ButtonBox style={!isLoggedIn ? { 'display': 'none' } : { 'display': 'block' }} disabled={!isLoggedIn} onClick={() => handleBookmarked()}>
                 <FiBookmark className="bookmark"
                     style={userBookmarks?.includes(spotId) ? { 'fill': '#192168', 'color': '#192168' } : { 'fill': 'white' }} />
             </ButtonBox>

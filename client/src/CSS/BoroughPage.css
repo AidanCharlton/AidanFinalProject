@@ -1,19 +1,26 @@
 .borough-map {
   width: 500px;
-  height: 680px;
-}
-
-@media only screen and (max-width: 1100px) {
-  .borough-map {
-    width: 600px;
-    height: 700px;
-  }
+  height: 700px;
 }
 
 @media only screen and (max-width: 500px) {
   .borough-map {
-    width: 300px;
+    max-width: 300px;
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 850px) {
+  .borough-map {
+    width: 500px;
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width: 850px) and (max-width: 1500px) {
+  .borough-map {
+    width: 800px;
     height: 500px;
-    margin-bottom: 200px;
+    margin-bottom: 0px;
   }
 }
